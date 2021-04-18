@@ -26,6 +26,9 @@ dist/
 # JetBrains IDE
 .idea/
 
+# Eclipse IDE
+.metadata/
+
 # Unit test reports
 TEST*.xml
 
