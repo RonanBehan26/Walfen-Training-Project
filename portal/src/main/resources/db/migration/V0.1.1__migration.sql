@@ -5,3 +5,11 @@ create table company (
 	primary key (id),
 	unique key uk_company_name (name)
 );
+
+create table user (
+	id bigint unsigned not null auto_increment, 
+	firstName varchar(20),
+	lastName varchar(20),
+	primary key (id)
+);
+
