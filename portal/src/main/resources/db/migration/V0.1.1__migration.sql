@@ -12,3 +12,12 @@ create table user (
 	lName varchar(20),
 	primary key (userID)
 );
+
+DROP TABLE user;
+
+create table user (
+	id bigint unsigned not null auto_increment, 
+	first_name varchar(20),
+	last_name varchar(20),
+	primary key (id)
+);

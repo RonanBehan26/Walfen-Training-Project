@@ -13,33 +13,32 @@ import javax.persistence.Table;
 @Table(name ="user")
 public class User {
 	
-	private long userID;
-	private String fName;
-	private String lName;
-	
+	private long id;
+	private String first_name;
+	private String last_name;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "userID")
-	public long getUserID() {
-		return userID;
+	@Column(name = "id")
+	public long getId() {
+		return id;
 	}
-	public void setUserID(long userID) {
-		this.userID = userID;
+	public void setId(long id) {
+		this.id = id;
 	}
-	@Column(name = "fName")
+	@Column(name = "first_name")
 	public String getfName() {
-		return fName;
+		return first_name;
 	}
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setfName(String first_name) {
+		this.first_name = first_name;
 	}
-	@Column(name = "lName")
-	public String getlName() {
-		return lName;
+	@Column(name = "last_name")
+	public String getlast_name() {
+		return last_name;
 	}
-	public void setlName(String lName) {
-		this.lName = lName;
+	public void setlast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 }
