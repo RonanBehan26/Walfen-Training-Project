@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
 	public User create(User user) {
 		LOGGER.info("create user");
 		// TODO Auto-generated method stub
-		return User.save(user);
+		return userDao.save(user);
 	}
 
 }
