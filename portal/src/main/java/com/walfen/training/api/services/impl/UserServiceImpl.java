@@ -38,4 +38,12 @@ public class UserServiceImpl implements UserService{
 		return userDao.findById(id).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 
+	@Override
+	@Transactional
+	public User create(User user) {
+		LOGGER.info("create user");
+		// TODO Auto-generated method stub
+		return userDao.save(user);
+	}
+
 }
