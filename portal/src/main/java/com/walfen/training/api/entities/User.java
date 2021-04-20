@@ -26,14 +26,14 @@ public class User {
 	public void setId(long id) {
 		this.id = id;
 	}
-	@Column(name = "firstName")
+	@Column(name = "first_name")
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	@Column(name = "lastName")
+	@Column(name = "last_name")
 	public String getLastName() {
 		return lastName;
 	}
