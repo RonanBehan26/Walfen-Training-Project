@@ -50,5 +50,17 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("$[2].lastName", is("Doe")));
 
 	}
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testGet() throws Exception {
+		mvc.perform(get("/users/{id}", 1) //this is the api endpoint to be called
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.id", is(1)))
+			.andExpect(jsonPath("$.firstName", is("John")))
+			.andExpect(jsonPath("$.lastName", is("Burke")));
+	}
 	// @Formatter:on
 }
