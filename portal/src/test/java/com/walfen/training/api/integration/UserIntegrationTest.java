@@ -39,16 +39,15 @@ public class UserIntegrationTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$", hasSize(3)))
-			.andExpect(jsonPath("$.totalElements", is(3)))
-			.andExpect(jsonPath("$.content[0].id", is(1)))
-			.andExpect(jsonPath("$.content[0].firstName", is("John")))
-			.andExpect(jsonPath("$.content[0].lastName", is("Burke")))
-			.andExpect(jsonPath("$.content[1].id", is(2)))
-			.andExpect(jsonPath("$.content[1].firstName", is("Pat")))
-			.andExpect(jsonPath("$.content[1].lastName", is("Glen")))
-			.andExpect(jsonPath("$.content[2].id", is(3)))
-			.andExpect(jsonPath("$.content[2].firstName", is("Jane")))
-			.andExpect(jsonPath("$.content[2].lastName", is("Doe")));
+			.andExpect(jsonPath("$[0].id", is(1)))
+			.andExpect(jsonPath("$[0].firstName", is("John")))
+			.andExpect(jsonPath("$[0].lastName", is("Burke")))
+			.andExpect(jsonPath("$[1].id", is(2)))
+			.andExpect(jsonPath("$[1].firstName", is("Pat")))
+			.andExpect(jsonPath("$[1].lastName", is("Glen")))
+			.andExpect(jsonPath("$[2].id", is(3)))
+			.andExpect(jsonPath("$[2].firstName", is("Jane")))
+			.andExpect(jsonPath("$[2].lastName", is("Doe")));
 
 	}
 	// @Formatter:on

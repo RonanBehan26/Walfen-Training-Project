@@ -8,8 +8,8 @@ create table company (
 
 create table user (
 	id bigint unsigned not null auto_increment, 
-	firstName varchar(20),
-	lastName varchar(20),
+	first_name varchar(20),
+	last_name varchar(20),
 	primary key (id)
 );
 
