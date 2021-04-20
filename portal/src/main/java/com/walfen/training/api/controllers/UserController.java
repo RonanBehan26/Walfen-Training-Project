@@ -6,9 +6,12 @@ import javax.annotation.Resource;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 
 import com.walfen.training.api.entities.User;
 import com.walfen.training.api.services.UserService;
@@ -31,6 +34,15 @@ public class UserController {
 	public User get(@PathVariable Long id) {
 		User user = userService.get(id);
 		
+		return user;
+	}
+	
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public User create(@RequestBody User user) {
+	
+		user = userService.create(user);
+
 		return user;
 	}
 

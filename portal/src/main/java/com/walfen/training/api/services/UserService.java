@@ -10,5 +10,7 @@ public interface UserService {
 
 	User get(Long id);
 
+	User create(User user);
+
 
 }

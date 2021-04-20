@@ -40,5 +40,10 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public static User save(User user) {
+		// TODO Auto-generated method stub
+		return user;
+	}
+
 
 }
