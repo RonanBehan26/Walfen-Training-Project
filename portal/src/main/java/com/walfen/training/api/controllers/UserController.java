@@ -47,5 +47,11 @@ public class UserController {
 
 		return userService.update(user);
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Long id) {
+		userService.delete(id);
+	}
 
 }

@@ -58,4 +58,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.save(storedUser);
 	}
 
+	@Override
+	@Transactional
+	public void delete(Long id) {
+		LOGGER.info("{}: delete skill - id: {}", id);
+		
+		userDao.deleteById(id);
+		
+	}
+
 }
