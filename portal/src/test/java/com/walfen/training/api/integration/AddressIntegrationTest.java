@@ -2,7 +2,10 @@ package com.walfen.training.api.integration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,6 +21,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.walfen.training.api.entities.Address;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -50,6 +54,70 @@ public class AddressIntegrationTest {
 			.andExpect(jsonPath("$[2].city", is("Dublin")))
 			.andExpect(jsonPath("$[2].country", is("Ireland")));
 
+	}
+	
+
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testGet() throws Exception {
+		mvc.perform(get("/addresses/{id}", 1) //this is the api endpoint to be called
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$id", is(1)))
+			.andExpect(jsonPath("$street", is("Cahirdown")))
+			.andExpect(jsonPath("$city", is("Listowel")))
+			.andExpect(jsonPath("$country", is("Ireland")));
+	}
+	
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCreate() throws Exception {
+		Address address = new Address();
+		address.setStreet("BagEnd");
+		address.setCity("Shire");
+		address.setCountry("MiddleEarth");
+
+		mvc.perform(post("/addresses")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(objectMapper.writeValueAsString(address)))
+			.andExpect(status().isCreated())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.id").exists()) //not sure if this is supposed to be here or not, I assume it isn't
+			.andExpect(jsonPath("$street", is("Cahirdown")))
+			.andExpect(jsonPath("$city", is("Listowel")))
+			.andExpect(jsonPath("$country", is("Ireland")));
+	}
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testUpdate() throws Exception {
+		Address address = new Address();
+		address.setId(1);
+		address.setStreet("Dromin");
+		address.setCity("Listowel");
+		address.setCountry("Ireland");
+
+		mvc.perform(put("/addesses/{id}", address.getId())
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(objectMapper.writeValueAsString(address)))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.id", is(1)))
+			.andExpect(jsonPath("$street", is("Cahirdown")))
+			.andExpect(jsonPath("$city", is("Listowel")))
+			.andExpect(jsonPath("$country", is("Ireland")));
+	}
+	
+	// @formatter:on
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testDelete() throws Exception {
+		
+		mvc.perform(delete("/addresses/{id}", 1))
+			.andExpect(status().isNoContent());	
 	}
 
 } 
