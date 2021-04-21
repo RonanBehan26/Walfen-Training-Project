@@ -49,13 +49,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public User update(User user) {
-		LOGGER.info("{}: update user - id: {}", user.getId());
+		LOGGER.info("update user - id: {}", user.getId());
 
 		User storedUser = userDao.findById(user.getId()).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 		storedUser.setFirstName(user.getFirstName());
 		storedUser.setLastName(user.getLastName());
 
 		return userDao.save(storedUser);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long id) {
+		LOGGER.info("delete user - id: {}", id);
+		
+		userDao.deleteById(id);
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package com.walfen.training.api.integration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -103,4 +104,12 @@ public class UserIntegrationTest {
 	}
 	
 	// @formatter:on
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testDelete() throws Exception {
+		
+		mvc.perform(delete("/users/{id}", 1))
+			.andExpect(status().isNoContent());	
+	}
 }
