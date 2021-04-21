@@ -28,6 +28,8 @@ public class UserController {
 
 		return userService.list();
 	}
+	
+	
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User get(@PathVariable Long id) {

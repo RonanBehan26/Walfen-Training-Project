@@ -13,3 +13,11 @@ create table user (
 	primary key (id)
 );
 
+create table address (
+	id bigint unsigned not null auto_increment, 
+	street varchar(50),
+	city varchar(50),
+	country varchar(50),
+	primary key (id)
+);
+
