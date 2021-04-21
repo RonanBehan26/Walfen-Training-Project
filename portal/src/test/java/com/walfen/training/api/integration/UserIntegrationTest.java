@@ -109,8 +109,7 @@ public class UserIntegrationTest {
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testDelete() throws Exception {
 		
-		mvc.perform(delete("/skills/{id}", 1))
-		.andExpect(status().isNotFound());
-		
+		mvc.perform(delete("/users/{id}", 1))
+			.andExpect(status().isNoContent());	
 	}
 }
