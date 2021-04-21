@@ -64,10 +64,10 @@ public class AddressIntegrationTest {
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$id", is(1)))
-			.andExpect(jsonPath("$street", is("Cahirdown")))
-			.andExpect(jsonPath("$city", is("Listowel")))
-			.andExpect(jsonPath("$country", is("Ireland")));
+			.andExpect(jsonPath("$.id", is(1)))
+			.andExpect(jsonPath("$.street", is("Cahirdown")))
+			.andExpect(jsonPath("$.city", is("Listowel")))
+			.andExpect(jsonPath("$.country", is("Ireland")));
 	}
 	
 	
@@ -85,9 +85,9 @@ public class AddressIntegrationTest {
 			.andExpect(status().isCreated())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id").exists()) //not sure if this is supposed to be here or not, I assume it isn't
-			.andExpect(jsonPath("$street", is("Cahirdown")))
-			.andExpect(jsonPath("$city", is("Listowel")))
-			.andExpect(jsonPath("$country", is("Ireland")));
+			.andExpect(jsonPath("$.street", is("BagEnd")))//You are verifying the above here
+			.andExpect(jsonPath("$.city", is("Shire")))
+			.andExpect(jsonPath("$.country", is("Shire")));
 	}
 	
 	@Test
@@ -105,9 +105,9 @@ public class AddressIntegrationTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
-			.andExpect(jsonPath("$street", is("Cahirdown")))
-			.andExpect(jsonPath("$city", is("Listowel")))
-			.andExpect(jsonPath("$country", is("Ireland")));
+			.andExpect(jsonPath("$.street", is("Cahirdown")))
+			.andExpect(jsonPath("$.city", is("Listowel")))
+			.andExpect(jsonPath("$.country", is("Ireland")));
 	}
 	
 	// @formatter:on

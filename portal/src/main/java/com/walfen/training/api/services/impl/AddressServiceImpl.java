@@ -28,7 +28,7 @@ public class AddressServiceImpl implements AddressService {
 		@Transactional(readOnly = true)
 		public List<Address> list() {
 			// TODO Auto-generated method stub
-			return null;
+			return addressDao.findAll();
 		}
 		
 		@Override
