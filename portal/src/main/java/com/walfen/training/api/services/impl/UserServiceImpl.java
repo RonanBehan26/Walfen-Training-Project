@@ -16,13 +16,13 @@ import com.walfen.training.api.entities.User;
 import com.walfen.training.api.services.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-	
+
 	@Resource
 	private UserDao userDao;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<User> list() {
@@ -42,8 +42,20 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	public User create(User user) {
 		LOGGER.info("create user");
-		// TODO Auto-generated method stub
+
 		return userDao.save(user);
+	}
+
+	@Override
+	@Transactional
+	public User update(User user) {
+		LOGGER.info("{}: update user - id: {}", user.getId());
+
+		User storedUser = userDao.findById(user.getId()).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+		storedUser.setFirstName(user.getFirstName());
+		storedUser.setLastName(user.getLastName());
+
+		return userDao.save(storedUser);
 	}
 
 }

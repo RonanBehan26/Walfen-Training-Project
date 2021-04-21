@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,9 +31,9 @@ public class UserIntegrationTest {
 
 	@Resource
 	private ObjectMapper objectMapper;
-	
-	// @Formatter:off
-	
+
+	// @formatter:off
+
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testList() throws Exception {
@@ -82,5 +83,24 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("Mary")))
 			.andExpect(jsonPath("$.lastName", is("Harty")));
 	}
-	// @Formatter:on
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testUpdate() throws Exception {
+		User user = new User();
+		user.setId(1);
+		user.setFirstName("Mary");
+		user.setLastName("Harty");
+
+		mvc.perform(put("/users/{id}", user.getId())
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(objectMapper.writeValueAsString(user)))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.id", is(1)))
+			.andExpect(jsonPath("$.firstName", is("Mary")))
+			.andExpect(jsonPath("$.lastName", is("Harty")));
+	}
+	
+	// @formatter:on
 }
