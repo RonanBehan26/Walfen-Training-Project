@@ -24,13 +24,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Resource
 	private EmployeeDao employeeDao;
 
+//	@Override
+//	@Transactional(readOnly = true)
+//	public List<Employee> findByOrderByPosition(String position) {
+//		LOGGER.info("list employees");
+//
+//		return employeeDao.findByOrderByPosition(position);
+//	}
+	//step 3
 	@Override
-	@Transactional(readOnly = true)
-	public List<Employee> list() {
-		LOGGER.info("list employees");
-
-		return employeeDao.findAll();
+	public List<Employee> findByOrderByPosition(String position) {
+		// TODO Auto-generated method stub
+		return employeeDao.findAllByOrderByPosition();
 	}
+	
+//	public List<Employee> findByOrderByPosition(String position){
+//		//stop here
+//	}
+	
+	
 
 	@Override
 	@Transactional
@@ -41,7 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	@Transactional
-	public User create(Employee employee) {
+	public Employee create(Employee employee) {
 		LOGGER.info("create employee");
 
 		return employeeDao.save(employee);
@@ -49,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	@Transactional
-	public User update(Employee employee) {
+	public Employee update(Employee employee) {
 		LOGGER.info("update employee - id: {}", employee.getId());
 
 		Employee storedEmployee = employeeDao.findById(employee.getId()).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
@@ -67,5 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.deleteById(id);
 		
 	}
+
+
 
 }

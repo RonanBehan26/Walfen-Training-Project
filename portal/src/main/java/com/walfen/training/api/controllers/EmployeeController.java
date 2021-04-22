@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.walfen.training.api.entities.Employee;
-import com.walfen.training.api.entities.User;
 import com.walfen.training.api.services.EmployeeService;
 
 
@@ -24,12 +23,27 @@ public class EmployeeController {
 	
 	@Resource
 	private EmployeeService employeeService;
-
+	
+	
+//step 1
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Employee> list() {
+	public String findByPosition(@PathVariable("employees") String position) {
+		
+	String returnValue ="PositionList";
+	
+	List<Employee> employee = employeeService.findByOrderByPosition();
 
-		return employeeService.list();
+		return returnValue;
+	
 	}
+
+	
+//	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Employee> list() {
+//
+//		return employeeService.list();
+//	}
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Employee get(@PathVariable Long id) {
@@ -39,13 +53,13 @@ public class EmployeeController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public User create(@RequestBody Employee employee) {
+	public Employee create(@RequestBody Employee employee) {
 
 		return employeeService.create(employee);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public User update(@PathVariable Long id, @RequestBody Employee employee) {
+	public Employee update(@PathVariable Long id, @RequestBody Employee employee) {
 
 		return employeeService.update(employee);
 	}

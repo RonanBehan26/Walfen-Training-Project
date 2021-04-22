@@ -67,12 +67,13 @@ public class EmployeeIntegrationTest {
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$.totalElements", is(1)))
-			.andExpect(jsonPath("$[0].firstName", is("John")))
-			.andExpect(jsonPath("$[0].lastName", is("Burke")))
-			.andExpect(jsonPath("$.[0].company", is("Google")))
-			.andExpect(jsonPath("$.[0].position", is("Manager")));
+			.andExpect(jsonPath("$.id", is(1)))
+			.andExpect(jsonPath("$.firstName", is("John")))
+			.andExpect(jsonPath("$.lastName", is("Burke")))
+			.andExpect(jsonPath("$.company", is("Google")))
+			.andExpect(jsonPath("$.position", is("Manager")));
 	}
+
 	
 	
 	@Test
