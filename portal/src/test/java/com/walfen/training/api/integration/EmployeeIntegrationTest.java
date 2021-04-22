@@ -41,22 +41,21 @@ public class EmployeeIntegrationTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$", hasSize(3)))
-			.andExpect(jsonPath("$.totalElements", is(3)))
 			.andExpect(jsonPath("$[0].id", is(1)))
 			.andExpect(jsonPath("$[0].firstName", is("John")))
 			.andExpect(jsonPath("$[0].lastName", is("Burke")))
-			.andExpect(jsonPath("$.[0].company", is("Google")))
-			.andExpect(jsonPath("$.[0].position", is("Manager")))
+			.andExpect(jsonPath("$[0].company", is("Google")))
+			.andExpect(jsonPath("$[0].position", is("Manager")))
 			.andExpect(jsonPath("$[1].id", is(2)))
 			.andExpect(jsonPath("$[1].firstName", is("Pat")))
 			.andExpect(jsonPath("$[1].lastName", is("Glen")))
-			.andExpect(jsonPath("$.[1].company", is("Amazon")))
-			.andExpect(jsonPath("$.[1].position", is("Clerk")))
+			.andExpect(jsonPath("$[1].company", is("Amazon")))
+			.andExpect(jsonPath("$[1].position", is("Clerk")))
 			.andExpect(jsonPath("$[2].id", is(3)))
 			.andExpect(jsonPath("$[2].firstName", is("Jane")))
 			.andExpect(jsonPath("$[2].lastName", is("Doe")))
-			.andExpect(jsonPath("$.[2].company", is("Facebook")))
-			.andExpect(jsonPath("$.[2].position", is("Director")));
+			.andExpect(jsonPath("$[2].company", is("Facebook")))
+			.andExpect(jsonPath("$[2].position", is("Director")));
 		
 	}
 	
@@ -113,8 +112,10 @@ public class EmployeeIntegrationTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
-			.andExpect(jsonPath("$.firstName", is("Google")))
-			.andExpect(jsonPath("$.lastName", is("Vice President")));
+			.andExpect(jsonPath("$.firstName", is("John")))
+			.andExpect(jsonPath("$.lastName", is("Burke")))
+			.andExpect(jsonPath("$.company", is("Google")))
+			.andExpect(jsonPath("$.position", is("Vice President")));
 	}
 	
 	// @formatter:on

@@ -24,25 +24,11 @@ public class EmployeeController {
 	@Resource
 	private EmployeeService employeeService;
 	
-	
-//step 1
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String findByPosition(@PathVariable("employees") String position) {
-		
-	String returnValue ="PositionList";
-	
-	List<Employee> employee = employeeService.findByOrderByPosition();
+	public List<Employee> list() {
 
-		return returnValue;
-	
+		return employeeService.list();
 	}
-
-	
-//	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public List<Employee> list() {
-//
-//		return employeeService.list();
-//	}
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

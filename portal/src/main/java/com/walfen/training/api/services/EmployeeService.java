@@ -7,9 +7,7 @@ import com.walfen.training.api.entities.Employee;
 
 public interface EmployeeService {
 
-	//attempts
-	//List<Employee> list();
-	//List<Employee> findByOrderByPosition(String position);
+	List<Employee> list();
 
 	Employee get(Long id);
 
@@ -18,7 +16,5 @@ public interface EmployeeService {
 	Employee update(Employee employee);
 
 	void delete(Long id);
-
-	//step 2
-	List<Employee> findByOrderByPosition(String position); 
+ 
 }

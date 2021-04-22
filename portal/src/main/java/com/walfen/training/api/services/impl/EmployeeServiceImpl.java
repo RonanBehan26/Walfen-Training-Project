@@ -13,7 +13,6 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.walfen.training.api.daos.EmployeeDao;
 import com.walfen.training.api.entities.Employee;
-import com.walfen.training.api.entities.User;
 import com.walfen.training.api.services.EmployeeService;
 
 @Service
@@ -24,26 +23,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Resource
 	private EmployeeDao employeeDao;
 
-//	@Override
-//	@Transactional(readOnly = true)
-//	public List<Employee> findByOrderByPosition(String position) {
-//		LOGGER.info("list employees");
-//
-//		return employeeDao.findByOrderByPosition(position);
-//	}
-	//step 3
 	@Override
-	public List<Employee> findByOrderByPosition(String position) {
-		// TODO Auto-generated method stub
-		return employeeDao.findAllByOrderByPosition();
+	@Transactional(readOnly = true)
+	public List<Employee> list() {
+		LOGGER.info("list users");
+
+		return employeeDao.findAll();
 	}
 	
-//	public List<Employee> findByOrderByPosition(String position){
-//		//stop here
-//	}
-	
-	
-
 	@Override
 	@Transactional
 	public Employee get(Long id) {
@@ -79,7 +66,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.deleteById(id);
 		
 	}
-
-
 
 }
