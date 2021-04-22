@@ -27,7 +27,7 @@ public class AddressServiceImpl implements AddressService {
 		@Override
 		@Transactional(readOnly = true)
 		public List<Address> list() {
-			// TODO Auto-generated method stub
+			LOGGER.info("list addresses");
 			return addressDao.findAll();
 		}
 		
@@ -43,7 +43,6 @@ public class AddressServiceImpl implements AddressService {
 		@Transactional
 		public Address create(Address address) {
 			LOGGER.info("create address");
-
 			return addressDao.save(address);
 		}
 

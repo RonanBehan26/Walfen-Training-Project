@@ -13,6 +13,9 @@ import javax.persistence.Table;
 @Table(name ="user")
 public class User {
 	
+	Employee employeeA = new Employee();
+	//
+	
 	private long id;
 	private String firstName;
 	private String lastName;

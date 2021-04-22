@@ -21,3 +21,9 @@ create table address (
 	primary key (id)
 );
 
+create table employee ( 
+	company varchar(50),
+	position varchar(59),
+	primary key (company)
+);
+
