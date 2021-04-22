@@ -80,7 +80,7 @@ public class UserIntegrationTest {
 			.content(objectMapper.writeValueAsString(user)))
 			.andExpect(status().isCreated())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$.id").exists()) //not sure if this is supposed to be here or not, I assume it isn't
+			.andExpect(jsonPath("$.id").exists()) 
 			.andExpect(jsonPath("$.firstName", is("Mary")))
 			.andExpect(jsonPath("$.lastName", is("Harty")));
 	}

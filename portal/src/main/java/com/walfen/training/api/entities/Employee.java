@@ -2,10 +2,13 @@ package com.walfen.training.api.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity //this is an annotation for mapping to link this class with the database
-@Table(name = "employee")
+@Table(name ="employee")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Employee extends User{
 //This is our Employee Class, a sub class of the User, extends being the keyword here
 	

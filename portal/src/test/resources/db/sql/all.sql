@@ -15,7 +15,8 @@ insert into address (id, street, city, country) values (1, 'Cahirdown', 'Listowe
 insert into address (id, street, city, country) values (2, 'Palace', 'Cork', 'Ireland');
 insert into address (id, street, city, country) values (3, 'Grafton', 'Dublin', 'Ireland');
 
-insert into employee (company, position) values ('Google', 'Manager');
-insert into employee (company, position) values ('Amazon', 'Clerk');
+insert into employee (id, first_name, last_name, company, position) values (1, 'John', 'Burke', 'Google', 'Manager');
+insert into employee (id, first_name, last_name, company, position) values (2, 'Pat', 'Glen', 'Amazon', 'Clerk');
+insert into employee (id, first_name, last_name, company, position) values (3, 'Jane', 'Doe', 'Facebook', 'Director');
 
 

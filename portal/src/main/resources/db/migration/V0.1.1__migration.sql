@@ -22,8 +22,11 @@ create table address (
 );
 
 create table employee ( 
+	id bigint unsigned not null auto_increment, 
+	first_name varchar(20),
+	last_name varchar(20),
 	company varchar(50),
-	position varchar(59),
-	primary key (company)
+	position varchar(50),
+	primary key (id)
 );
 
