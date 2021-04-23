@@ -134,4 +134,14 @@ public class EmployeeTestDao {
 		assertEquals(employees.get(1).getId(), 2);
 		assertEquals(employees.get(2).getId(), 1);
 	}
+	
+	// TODO: create test filter by company equals to Amazon
+	// TODO: create test filter by id equals to 3
+	// TODO: create test filter by first name equals to Jane
+	// TODO: create test filter by first name containing n
+	// TODO: create test filter by company equals to Amazon or to Google
+	// TODO: create test filter by company equals to Amazon and first name starting by P
+	// TODO: create test filter by last name equals to Mary (it should return 0 results)
+	
+	
 }
