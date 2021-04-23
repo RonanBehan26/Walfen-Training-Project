@@ -27,6 +27,24 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 	List<Employee> findAllByOrderByCompanyDesc();
 
 	List<Employee> findAllByOrderByIdDesc();
+
+	List<Employee> findAllByCompany(String company);
+
+	List<Employee> findAllByFirstName(String first_name);
+
+	List<Employee> findByFirstNameContaining(String first_name);
+
+	List<Employee> findAllById(long id);
+	
+	List<Employee> findAllByCompanyOrCompany(String company, String company2);
+
+	List<Employee> findAllByFirstNameAndCompanyContaining(String first_name, String company);
+
+	
+
+	
+
+	
 }
 
 
