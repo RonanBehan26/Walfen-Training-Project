@@ -193,21 +193,24 @@ public class EmployeeTestDao {
 		
 	}
 
-	 //TODO: create test filter by company equals to Amazon and first name starting by P
+	 //Create test filter by company equals to Amazon and first name starting by P, test successful
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCompanyAmazonAndP() throws Exception {
-		List<Employee> employees = employeeDao.findAllByFirstNameAndCompanyContaining("p", "Amazon");
+		List<Employee> employees = employeeDao.findAllByFirstNameContainingAndCompany("P", "Amazon");
 		assertEquals(employees.size(), 1);
 		assertEquals(employees.get(0).getId(), 2);
 		assertEquals(employees.get(0).getFirstName(), "Pat");
-		assertEquals(employees.get(0).getCompany(), "Amazon");
-		
+		assertEquals(employees.get(0).getCompany(), "Amazon");	
 	}
 	
-	
-	
 	// TODO: create test filter by last name equals to Mary (it should return 0 results)
-	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testLastNameMary() throws Exception {
+		List<Employee> employees = employeeDao.findAllByLastName("Mary");
+		assertEquals(employees.size(), 0);
+
+	}
 	
 }
