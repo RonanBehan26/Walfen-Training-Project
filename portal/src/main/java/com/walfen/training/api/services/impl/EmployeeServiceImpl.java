@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<Employee> list() {
 		LOGGER.info("list users");
 
-		return employeeDao.findAll();
+		return employeeDao.findAllByOrderByPosition();
 	}
 	
 	@Override
