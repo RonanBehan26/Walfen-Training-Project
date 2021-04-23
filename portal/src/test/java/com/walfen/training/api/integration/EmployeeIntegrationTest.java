@@ -21,86 +21,101 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.walfen.training.api.entities.User;
+import com.walfen.training.api.entities.Employee;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-public class UserIntegrationTest {
+public class EmployeeIntegrationTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Resource
 	private ObjectMapper objectMapper;
-
-	// @formatter:off
-
+	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testList() throws Exception {
-		mvc.perform(get("/users") //this is the api endpoint to be called
+		mvc.perform(get("/employees") //this is the api endpoint to be called
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$", hasSize(3)))
-			.andExpect(jsonPath("$[0].id", is(1)))
-			.andExpect(jsonPath("$[0].firstName", is("John")))
-			.andExpect(jsonPath("$[0].lastName", is("Burke")))
-			.andExpect(jsonPath("$[1].id", is(2)))
-			.andExpect(jsonPath("$[1].firstName", is("Pat")))
-			.andExpect(jsonPath("$[1].lastName", is("Glen")))
-			.andExpect(jsonPath("$[2].id", is(3)))
-			.andExpect(jsonPath("$[2].firstName", is("Jane")))
-			.andExpect(jsonPath("$[2].lastName", is("Doe")));
-
+			.andExpect(jsonPath("$[0].id", is(2)))
+			.andExpect(jsonPath("$[0].firstName", is("Pat")))
+			.andExpect(jsonPath("$[0].lastName", is("Glen")))
+			.andExpect(jsonPath("$[0].company", is("Amazon")))
+			.andExpect(jsonPath("$[0].position", is("Clerk")))
+			.andExpect(jsonPath("$[1].id", is(3)))
+			.andExpect(jsonPath("$[1].firstName", is("Jane")))
+			.andExpect(jsonPath("$[1].lastName", is("Doe")))
+			.andExpect(jsonPath("$[1].company", is("Facebook")))
+			.andExpect(jsonPath("$[1].position", is("Director")))
+			.andExpect(jsonPath("$[2].id", is(1)))
+			.andExpect(jsonPath("$[2].firstName", is("John")))
+			.andExpect(jsonPath("$[2].lastName", is("Burke")))
+			.andExpect(jsonPath("$[2].company", is("Google")))
+			.andExpect(jsonPath("$[2].position", is("Manager")));
+		
 	}
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testGet() throws Exception {
-		mvc.perform(get("/users/{id}", 1) //this is the api endpoint to be called
+		mvc.perform(get("/employees/{id}", 1) //this is the api endpoint to be called
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
 			.andExpect(jsonPath("$.firstName", is("John")))
-			.andExpect(jsonPath("$.lastName", is("Burke")));
+			.andExpect(jsonPath("$.lastName", is("Burke")))
+			.andExpect(jsonPath("$.company", is("Google")))
+			.andExpect(jsonPath("$.position", is("Manager")));
 	}
+
 	
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCreate() throws Exception {
-		User user = new User();
-		user.setFirstName("Mary");
-		user.setLastName("Harty");
+		Employee employee = new Employee();
+		employee.setFirstName("Bill");
+		employee.setLastName("Franklin");
+		employee.setCompany("Twitch");
+		employee.setPosition("Junior Manager");
 
-		mvc.perform(post("/users")
+		mvc.perform(post("/employees")
 			.contentType(MediaType.APPLICATION_JSON)
-			.content(objectMapper.writeValueAsString(user)))
+			.content(objectMapper.writeValueAsString(employee)))
 			.andExpect(status().isCreated())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id").exists()) 
-			.andExpect(jsonPath("$.firstName", is("Mary")))
-			.andExpect(jsonPath("$.lastName", is("Harty")));
+			.andExpect(jsonPath("$.firstName", is("Bill")))
+			.andExpect(jsonPath("$.lastName", is("Franklin")))
+			.andExpect(jsonPath("$.company", is("Twitch")))
+			.andExpect(jsonPath("$.position", is("Junior Manager")));
 	}
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testUpdate() throws Exception {
-		User user = new User();
-		user.setId(1);
-		user.setFirstName("Mary");
-		user.setLastName("Harty");
+		Employee employee = new Employee();
+		employee.setId(1);
+		employee.setFirstName("John");
+		employee.setLastName("Burke");
+		employee.setCompany("Google");
+		employee.setPosition("Vice President");
 
-		mvc.perform(put("/users/{id}", user.getId())
+		mvc.perform(put("/employees/{id}", employee.getId())
 			.contentType(MediaType.APPLICATION_JSON)
-			.content(objectMapper.writeValueAsString(user)))
+			.content(objectMapper.writeValueAsString(employee)))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
-			.andExpect(jsonPath("$.firstName", is("Mary")))
-			.andExpect(jsonPath("$.lastName", is("Harty")));
+			.andExpect(jsonPath("$.firstName", is("John")))
+			.andExpect(jsonPath("$.lastName", is("Burke")))
+			.andExpect(jsonPath("$.company", is("Google")))
+			.andExpect(jsonPath("$.position", is("Vice President")));
 	}
 	
 	// @formatter:on
@@ -113,3 +128,4 @@ public class UserIntegrationTest {
 			.andExpect(status().isNoContent());	
 	}
 }
+

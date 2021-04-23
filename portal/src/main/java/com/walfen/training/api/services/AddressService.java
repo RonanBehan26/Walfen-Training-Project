@@ -7,14 +7,14 @@ import com.walfen.training.api.entities.Address;
 public interface AddressService {
 
 	List<Address> list();
-
+	
 	Address get(Long id);
-
-	void delete(Long id);
-
+	
+	Address create(Address address);
+	
 	Address update(Address address);
 
-	Address create(Address address);
+	void delete(Long id);
 
 
 }

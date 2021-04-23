@@ -84,10 +84,10 @@ public class AddressIntegrationTest {
 			.content(objectMapper.writeValueAsString(address)))
 			.andExpect(status().isCreated())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$.id").exists()) //not sure if this is supposed to be here or not, I assume it isn't
+			.andExpect(jsonPath("$.id").exists()) //id assigned, that it exists
 			.andExpect(jsonPath("$.street", is("BagEnd")))//You are verifying the above here
 			.andExpect(jsonPath("$.city", is("Shire")))
-			.andExpect(jsonPath("$.country", is("Shire")));
+			.andExpect(jsonPath("$.country", is("MiddleEarth")));
 	}
 	
 	@Test
@@ -96,17 +96,17 @@ public class AddressIntegrationTest {
 		Address address = new Address();
 		address.setId(1);
 		address.setStreet("Dromin");
-		address.setCity("Listowel");
+		address.setCity("Tralee");
 		address.setCountry("Ireland");
 
-		mvc.perform(put("/addesses/{id}", address.getId())
+		mvc.perform(put("/addresses/{id}", address.getId())
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(objectMapper.writeValueAsString(address)))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
-			.andExpect(jsonPath("$.street", is("Cahirdown")))
-			.andExpect(jsonPath("$.city", is("Listowel")))
+			.andExpect(jsonPath("$.street", is("Dromin")))//verifying the above
+			.andExpect(jsonPath("$.city", is("Tralee")))
 			.andExpect(jsonPath("$.country", is("Ireland")));
 	}
 	
