@@ -308,7 +308,7 @@ public class EmployeeTestDao {
 
 		boolean employees = employeeDao.existsByCompany("Google");
 		
-		equals(employees, true);
+		equals(true);
 		
 	}
 	

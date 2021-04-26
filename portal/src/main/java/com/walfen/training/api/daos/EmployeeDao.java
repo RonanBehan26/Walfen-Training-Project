@@ -64,7 +64,7 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 
 	boolean existsByCompany(String company);
 
-	
+	boolean existsIfId(long id);
 	
 	
 	
