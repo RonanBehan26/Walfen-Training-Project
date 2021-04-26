@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.walfen.training.api.entities.Employee;
@@ -212,5 +211,25 @@ public class EmployeeTestDao {
 		assertEquals(employees.size(), 0);
 
 	}
+	
+	
+	// TODO: create test count employees filter by company equals to Google
+	// TODO: create test count employees filter by id equals to 1
+	// TODO: create test count employees filter by first name equals to Pat
+	// TODO: create test count employees filter by first name containing a
+	// TODO: create test count employees filter by company equals to Amazon or to Facebook
+	// TODO: create test count employees filter by company equals to Amazon and first name starting by J
+	// TODO: create test count employees filter by last name equals to Mary (it should return 0 results)
+	
+	
+	// TODO: create test exist employees with company equals to Google
+	// TODO: create test exist employees with id equals to 1
+	// TODO: create test exist employees with first name equals to Pat
+	// TODO: create test exist employees with first name containing a
+	// TODO: create test exist employees with company equals to Amazon or to Facebook
+	// TODO: create test exist employees with company equals to Amazon and first name starting by J
+	// TODO: create test exist employees with last name equals to Mary (it should return 0 results)
+	
+	
 	
 }
