@@ -213,45 +213,118 @@ public class EmployeeTestDao {
 	}
 	
 	
-	long total = employeeDao.count();
-	
-	
-	
-	
-	// TODO: Create test count employees filter by company equals to Google
+	// Create test count employees filter by company equals to Google, test ok
 
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCompanyGoogleCount() throws Exception {
-		//long employees = employeeDao.count();
-		//List<Employee> employees = employeeDao.findAllByCompanyGoogle("Google");
-		
+
 		Long employees = employeeDao.countByCompany("Google");
 		
 		assertEquals(employees, 1);
 		
 	}
 	
-		
+	// Create test count employees filter by id equals to 1, test ok
 	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testIdCount() throws Exception {
+
+		Long employees = employeeDao.countById(1);
 		
+		assertEquals(employees, 1);
 		
-	
-	
+	}
 
 	
-	// TODO: create test count employees filter by id equals to 1
-
+	// Create test count employees filter by first name equals to Pat, test ok
 	
-	// TODO: create test count employees filter by first name equals to Pat
-	// TODO: create test count employees filter by first name containing a
-	// TODO: create test count employees filter by company equals to Amazon or to Facebook
-	// TODO: create test count employees filter by company equals to Amazon and first name starting by J
-	// TODO: create test count employees filter by last name equals to Mary (it should return 0 results)
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testNamePat() throws Exception {
+
+		Long employees = employeeDao.countByFirstName("Pat");
+		
+		assertEquals(employees, 1);
+		
+	}
+	
+	// TCreate test count employees filter by first name containing a, test ok
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testNameA() throws Exception {
+
+		Long employees = employeeDao.countByFirstNameContains("a");
+		
+		assertEquals(employees, 2);
+		
+	}
+	
+	// Create test count employees filter by company equals to Amazon or to Facebook, test ok
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCompanyName() throws Exception {
+
+		Long employees = employeeDao.countByCompanyOrCompany("Amazon", "Facebook");
+		
+		assertEquals(employees, 2);
+		
+	}
+	
+	
+	// Create test count employees filter by company equals to Facebook and first name starting by J, test ok
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCompanyJane() throws Exception {
+
+		Long employees = employeeDao.countByCompanyAndFirstNameStartsWith("Facebook", "J");
+		
+		assertEquals(employees, 1);
+		
+	}
+	
+	
+	// Create test count employees filter by last name equals to Mary (it should return 0 results, test ok
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCountMary() throws Exception {
+
+		Long employees = employeeDao.countByLastName("Mary");
+		
+		
+		
+		assertEquals(employees, 0);
+		
+	}
+	
+	
 	
 	
 	// TODO: create test exist employees with company equals to Google
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCompanyGoogleExist() throws Exception {
+
+		boolean employees = employeeDao.existsByCompany("Google");
+		
+		equals(employees, true);
+		
+	}
+	
+
+
 	// TODO: create test exist employees with id equals to 1
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testId1Exists() throws Exception {
+
+		boolean employees = employeeDao.existsIfId(1);
+		
+		equals(employees, 1);
+		
+	}
 	// TODO: create test exist employees with first name equals to Pat
 	// TODO: create test exist employees with first name containing a
 	// TODO: create test exist employees with company equals to Amazon or to Facebook

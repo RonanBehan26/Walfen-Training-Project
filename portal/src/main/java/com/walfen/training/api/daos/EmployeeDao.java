@@ -32,21 +32,39 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 
 	List<Employee> findAllByCompany(String company);
 
-	List<Employee> findAllByFirstName(String first_name);
+	List<Employee> findAllByFirstName(String firstName);
 
-	List<Employee> findByFirstNameContaining(String first_name);
+	List<Employee> findByFirstNameContaining(String firstName);
 
 	List<Employee> findAllById(long id);
 	
 	List<Employee> findAllByCompanyOrCompany(String company, String company2);
 
-	List<Employee> findAllByFirstNameStartsWithAndCompany(String first_name, String company);
+	List<Employee> findAllByFirstNameStartsWithAndCompany(String firstName, String company);
 
-	List<Employee> findAllByLastName(String last_name);
+	List<Employee> findAllByLastName(String lastName);
 	
 	
 
 	Long countByCompany(String company);
+
+	Long countById(long id);
+
+	Long countByFirstName(String firstName);
+
+	Long countByFirstNameContains(String firstName);
+
+	Long countByCompanyOrCompany(String company, String company2);
+
+	Long countByCompanyAndFirstNameStartsWith(String company, String company2);
+
+	Long countByLastName(String lastName);
+
+	
+
+	boolean existsByCompany(String company);
+
+	
 	
 	
 	
