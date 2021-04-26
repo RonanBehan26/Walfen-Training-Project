@@ -301,36 +301,85 @@ public class EmployeeTestDao {
 	
 	
 	
-	// TODO: create test exist employees with company equals to Google
+	// Create test exist employees with company equals to Google, test ok
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCompanyGoogleExist() throws Exception {
 
 		boolean employees = employeeDao.existsByCompany("Google");
 		
-		equals(true);
+		assertEquals(employees, true);
 		
 	}
 	
 
 
-	// TODO: create test exist employees with id equals to 1
+	// Create test exist employees with id equals to 1, test ok
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testId1Exists() throws Exception {
 
-		boolean employees = employeeDao.existsIfId(1);
+		boolean employees = employeeDao.existsById(1);
 		
-		equals(employees, 1);
+		assertEquals(employees, true);
 		
 	}
-	// TODO: create test exist employees with first name equals to Pat
-	// TODO: create test exist employees with first name containing a
-	// TODO: create test exist employees with company equals to Amazon or to Facebook
-	// TODO: create test exist employees with company equals to Amazon and first name starting by J
-	// TODO: create test exist employees with last name equals to Mary (it should return 0 results)
+	// Create test exist employees with first name equals to Pat, test ok
 	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testNamePatExists() throws Exception {
+
+		boolean employees = employeeDao.existsByFirstName("Pat");
+		
+		assertEquals(employees, true);
+		
+	}
 	
+	// Create test exist employees with first name containing a, test ok
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testfirstNameAExists() throws Exception {
+
+		boolean employees = employeeDao.existsByFirstNameContains("a");
+		
+		assertEquals(employees, true);
+		
+	}
+	// Create test exist employees with company equals to Amazon or to Facebook, test ok
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testfirstNameExists() throws Exception {
+
+		boolean employees = employeeDao.existsByCompanyOrCompany("Amazon", "Facebook");
+		
+		assertEquals(employees, true);
+		
+	}
+	// Create test exist employees with company equals to Amazon and first name starting by J, test ok
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCompanyExistsJane() throws Exception {
+
+		boolean employees = employeeDao.existsByCompanyAndFirstNameStartsWith("Facebook", "J");
+		
+		assertEquals(employees, true);
+		
+	}
+	
+	// Create test exist employees with last name equals to Mary (it should return 0 results), test ok
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testExistsMary() throws Exception {
+
+		boolean employees = employeeDao.existsByLastName("Mary");
+		
+		assertEquals(employees, false);
+		
+	}
 	
 }
