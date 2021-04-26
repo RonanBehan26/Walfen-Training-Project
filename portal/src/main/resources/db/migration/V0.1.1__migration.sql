@@ -30,3 +30,12 @@ create table employee (
 	primary key (id)
 );
 
+create table manager ( 
+	id bigint unsigned not null auto_increment, 
+	first_name varchar(20),
+	last_name varchar(20),
+	company varchar(50),
+	birthday datetime not null,
+	primary key (id)
+);
+
