@@ -203,7 +203,7 @@ public class EmployeeTestDao {
 		assertEquals(employees.get(0).getCompany(), "Amazon");	
 	}
 	
-	// TODO: create test filter by last name equals to Mary (it should return 0 results)
+	// Create test filter by last name equals to Mary (it should return 0 results)
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testLastNameMary() throws Exception {
@@ -213,8 +213,36 @@ public class EmployeeTestDao {
 	}
 	
 	
-	// TODO: create test count employees filter by company equals to Google
+	long total = employeeDao.count();
+	
+	
+	
+	
+	// TODO: Create test count employees filter by company equals to Google
+
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testCompanyGoogleCount() throws Exception {
+		//long employees = employeeDao.count();
+		//List<Employee> employees = employeeDao.findAllByCompanyGoogle("Google");
+		
+		Long employees = employeeDao.countByCompany("Google");
+		
+		assertEquals(employees, 1);
+		
+	}
+	
+		
+	
+		
+		
+	
+	
+
+	
 	// TODO: create test count employees filter by id equals to 1
+
+	
 	// TODO: create test count employees filter by first name equals to Pat
 	// TODO: create test count employees filter by first name containing a
 	// TODO: create test count employees filter by company equals to Amazon or to Facebook
