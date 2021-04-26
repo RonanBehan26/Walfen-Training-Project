@@ -359,14 +359,15 @@ public class EmployeeTestDao {
 		assertEquals(employees, true);
 		
 	}
+	
 	// Create test exist employees with company equals to Amazon and first name starting by J, test ok
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCompanyExistsJane() throws Exception {
 
-		boolean employees = employeeDao.existsByCompanyAndFirstNameStartsWith("Facebook", "J");
+		boolean employees = employeeDao.existsByCompanyAndFirstNameStartsWith("Amazon", "J");
 		
-		assertEquals(employees, true);
+		assertEquals(employees, false);
 		
 	}
 	
