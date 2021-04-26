@@ -197,7 +197,7 @@ public class EmployeeTestDao {
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCompanyAmazonAndP() throws Exception {
-		List<Employee> employees = employeeDao.findAllByFirstNameContainingAndCompany("P", "Amazon");
+		List<Employee> employees = employeeDao.findAllByFirstNameStartsWithAndCompany("P", "Amazon");
 		assertEquals(employees.size(), 1);
 		assertEquals(employees.get(0).getId(), 2);
 		assertEquals(employees.get(0).getFirstName(), "Pat");

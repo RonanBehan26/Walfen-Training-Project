@@ -38,8 +38,7 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 	
 	List<Employee> findAllByCompanyOrCompany(String company, String company2);
 
-
-	List<Employee> findAllByFirstNameContainingAndCompany(String first_name, String company);
+	List<Employee> findAllByFirstNameStartsWithAndCompany(String first_name, String company);
 
 	List<Employee> findAllByLastName(String last_name);
 
