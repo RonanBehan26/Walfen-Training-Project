@@ -2,6 +2,7 @@ delete from company;
 delete from user;
 delete from address;
 delete from employee;
+delete from manager;
 
 insert into company (id, name, city) values (1, 'Company 1', 'Krakow');
 insert into company (id, name, city) values (2, 'Company 2', 'Cork');
@@ -19,4 +20,7 @@ insert into employee (id, first_name, last_name, company, position) values (1, '
 insert into employee (id, first_name, last_name, company, position) values (2, 'Pat', 'Glen', 'Amazon', 'Clerk');
 insert into employee (id, first_name, last_name, company, position) values (3, 'Jane', 'Doe', 'Facebook', 'Director');
 
+insert into manager (id, first_name, last_name, company, birthday) values (1, 'Pipa', 'Devlin', 'PwC', '1978-11-22');
+insert into manager (id, first_name, last_name, company, birthday) values (2, 'Joe', 'Keogh', 'Microsoft', '1995-12-15');
+insert into manager (id, first_name, last_name, company, birthday) values (3, 'Tom', 'Rourke', 'Tesla', '1986-08-11');
 

@@ -12,6 +12,8 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 150MB
+logging:
+  config: config/logback-spring.xml
 
 app:
   mail: 
