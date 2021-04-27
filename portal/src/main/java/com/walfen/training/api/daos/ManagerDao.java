@@ -6,15 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.walfen.training.api.entities.Manager;
 
-public interface ManagerDao extends JpaRepository<Manager, Long>  {
+public interface ManagerDao extends JpaRepository<Manager, Long> {
 
-	static List<Manager> findAllByOrderByBirthdayDesc() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-
+	List<Manager> findAllByOrderByBirthdayDesc();
 
 }

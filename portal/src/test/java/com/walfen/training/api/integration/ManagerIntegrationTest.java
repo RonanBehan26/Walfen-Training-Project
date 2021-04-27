@@ -2,7 +2,6 @@ package com.walfen.training.api.integration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -11,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.annotation.Resource;
 
@@ -24,8 +23,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.walfen.training.api.daos.ManagerDao;
-import com.walfen.training.api.entities.Employee;
 import com.walfen.training.api.entities.Manager;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -37,6 +34,8 @@ public class ManagerIntegrationTest {
 
 	@Resource
 	private ObjectMapper objectMapper;
+
+	// @formatter:off
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })   //Test was successful
@@ -46,30 +45,24 @@ public class ManagerIntegrationTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$", hasSize(3)))
-			.andExpect(jsonPath("$[0].id", is(1)))
-			.andExpect(jsonPath("$[0].firstName", is("Pipa")))			
-			.andExpect(jsonPath("$[0].lastName", is("Devlin")))
-			.andExpect(jsonPath("$[0].company", is("PwC")))
-			.andExpect(jsonPath("$[0].birthday", is("1978-11-22")))
 			
-			.andExpect(jsonPath("$[1].id", is(2)))
-			.andExpect(jsonPath("$[1].firstName", is("Joe")))
-			.andExpect(jsonPath("$[1].lastName", is("Keogh")))
-			.andExpect(jsonPath("$[1].company", is("Microsoft")))
-			.andExpect(jsonPath("$[1].birthday", is("1995-12-15")))
+			.andExpect(jsonPath("$[0].id", is(2)))
+			.andExpect(jsonPath("$[0].firstName", is("Joe")))
+			.andExpect(jsonPath("$[0].lastName", is("Keogh")))
+			.andExpect(jsonPath("$[0].company", is("Microsoft")))
+			.andExpect(jsonPath("$[0].birthday", is("1995-12-15")))
 			
-			.andExpect(jsonPath("$[2].id", is(3)))
-			.andExpect(jsonPath("$[2].firstName", is("Tom")))
-			.andExpect(jsonPath("$[2].lastName", is("Rourke")))
-			.andExpect(jsonPath("$[2].company", is("Tesla")))
-			.andExpect(jsonPath("$[2].birthday", is("1986-08-11")));
-		
-		
-			List<Manager> manager = ManagerDao.findAllByOrderByBirthdayDesc();
-			assertEquals(manager.size(), 3);
-			assertEquals(manager.get(0).getId(), 1);
-			assertEquals(manager.get(1).getId(), 3);
-			assertEquals(manager.get(2).getId(), 2);
+			.andExpect(jsonPath("$[1].id", is(3)))
+			.andExpect(jsonPath("$[1].firstName", is("Tom")))
+			.andExpect(jsonPath("$[1].lastName", is("Rourke")))
+			.andExpect(jsonPath("$[1].company", is("Tesla")))
+			.andExpect(jsonPath("$[1].birthday", is("1986-08-11")))
+			
+			.andExpect(jsonPath("$[2].id", is(1)))
+			.andExpect(jsonPath("$[2].firstName", is("Pipa")))			
+			.andExpect(jsonPath("$[2].lastName", is("Devlin")))
+			.andExpect(jsonPath("$[2].company", is("PwC")))
+			.andExpect(jsonPath("$[2].birthday", is("1978-11-22")));
 	}
 	
 	@Test                                                 //Test was successful
@@ -86,8 +79,6 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.birthday", is("1978-11-22")));
 	}
 
-	
-	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testCreate() throws Exception {
@@ -95,7 +86,7 @@ public class ManagerIntegrationTest {
 		manager.setFirstName("Bill");
 		manager.setLastName("Franklin");
 		manager.setCompany("Twitch");
-		manager.setBirthday("1991-11-09");
+		manager.setBirthday(LocalDate.of(1983, 9, 1));
 
 		mvc.perform(post("/managers")
 			.contentType(MediaType.APPLICATION_JSON)
@@ -106,7 +97,7 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("Bill")))
 			.andExpect(jsonPath("$.lastName", is("Franklin")))
 			.andExpect(jsonPath("$.company", is("Twitch")))
-			.andExpect(jsonPath("$.birthday", is("1991-11-09")));
+			.andExpect(jsonPath("$.birthday", is("1983-09-01")));
 	}
 	
 	@Test
@@ -117,7 +108,7 @@ public class ManagerIntegrationTest {
 		manager.setFirstName("John");
 		manager.setLastName("Burke");
 		manager.setCompany("Google");
-		manager.setBirthday("Vice President");
+		manager.setBirthday(LocalDate.of(1983, 9, 1));
 
 		mvc.perform(put("/managers/{id}", manager.getId())
 			.contentType(MediaType.APPLICATION_JSON)
@@ -128,16 +119,15 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("John")))
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
-			.andExpect(jsonPath("$.position", is("Vice President")));
+			.andExpect(jsonPath("$.birthday", is("1983-09-01")));
 	}
-	
-	// @formatter:on
-	
+		
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testDelete() throws Exception {
-		
 		mvc.perform(delete("/users/{id}", 1))
 			.andExpect(status().isNoContent());	
 	}
+	
+	// @formatter:on
 }
