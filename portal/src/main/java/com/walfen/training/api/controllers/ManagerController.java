@@ -17,7 +17,7 @@ import com.walfen.training.api.services.ManagerService;
 
 
 @RestController
-@RequestMapping("/managers")
+@RequestMapping("/manager")
 public class ManagerController {
 	
 		@Resource

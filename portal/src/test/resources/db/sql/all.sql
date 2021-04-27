@@ -20,7 +20,7 @@ insert into employee (id, first_name, last_name, company, position) values (1, '
 insert into employee (id, first_name, last_name, company, position) values (2, 'Pat', 'Glen', 'Amazon', 'Clerk');
 insert into employee (id, first_name, last_name, company, position) values (3, 'Jane', 'Doe', 'Facebook', 'Director');
 
-insert into manager (id, first_name, last_name, company, birthday) values (1, 'Pipa', 'Devlin', 'PwC', '1978-11-22 13:23:44');
-insert into manager (id, first_name, last_name, company, birthday) values (2, 'Joe', 'Keogh', 'Microsoft', '1995-12-15 14:23:44');
-insert into manager (id, first_name, last_name, company, birthday) values (3, 'Tom', 'Rourke', 'Tesla', '1986-08-11 15:23:44');
+insert into manager (id, first_name, last_name, company, birthday) values (1, 'Pipa', 'Devlin', 'PwC', '1978-11-22');
+insert into manager (id, first_name, last_name, company, birthday) values (2, 'Joe', 'Keogh', 'Microsoft', '1995-12-15');
+insert into manager (id, first_name, last_name, company, birthday) values (3, 'Tom', 'Rourke', 'Tesla', '1986-08-11');
 
