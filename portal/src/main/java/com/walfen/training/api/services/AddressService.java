@@ -9,28 +9,15 @@ import com.walfen.training.api.entities.Address;
 
 public interface AddressService {
 
-	List<Address> list();
+	List<AddressDto> list();
 	
-	Address get(Long id);
+	AddressDto get(Long id);
 	
-	Address create(Address address);
+	AddressDto create(Address address);
 	
-	Address update(Address address);
+	AddressDto update(Address address);
 
 	void delete(Long id);
 	
-
-	Page<Address> list(Boolean addressDto);
-
-	AddressDto get(AddressDto addressDto);
-
-	AddressDto create(AddressDto addressDto);
-
-	AddressDto update(AddressDto addressDto);
-
-	void delete(AddressDto addressDto);
-
-
-
 
 }

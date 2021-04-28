@@ -52,5 +52,7 @@ public class ManagerController {
 	public void delete(@PathVariable Long id) {
 		managerService.delete(id);
 	}
+	
+	
 
 }
