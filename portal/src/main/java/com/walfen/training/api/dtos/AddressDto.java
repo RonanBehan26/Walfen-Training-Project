@@ -1,10 +1,5 @@
 package com.walfen.training.api.dtos;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name ="address")
 public class AddressDto {
 
 	
@@ -12,14 +7,10 @@ public class AddressDto {
 	private String street;
 	private String city;
 	private String country;
-	private boolean addressDto;
+	private boolean dto;
 	
-	public boolean isAddressDto() {
-		return addressDto;
-	}
-	
-	AddressDto(boolean addressDto){
-		addressDto = true;
+	AddressDto(boolean dto){
+		dto = true;
 	}
 	
 	public long getId() {
@@ -49,9 +40,13 @@ public class AddressDto {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	public boolean isDto() {
+		return dto;
+	}
 
-	public void setAddressDto(boolean addressDto) {
-		this.addressDto = addressDto;
+	public void setDto(boolean dto) {
+		this.dto = dto;
 	}	
 
 	
