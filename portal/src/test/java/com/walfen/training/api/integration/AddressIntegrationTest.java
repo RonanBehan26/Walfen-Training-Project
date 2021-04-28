@@ -68,6 +68,7 @@ public class AddressIntegrationTest {
 			.andExpect(jsonPath("$.street", is("Cahirdown")))
 			.andExpect(jsonPath("$.city", is("Listowel")))
 			.andExpect(jsonPath("$.country", is("Ireland")));
+		
 	}
 	
 	
