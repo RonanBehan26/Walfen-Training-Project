@@ -9,8 +9,8 @@ public class AddressDto {
 	private String country;
 	private boolean dto;
 	
-	AddressDto(boolean dto){
-		dto = true;
+	public AddressDto(){
+		this.dto = true;
 	}
 	
 	public long getId() {

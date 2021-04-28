@@ -46,16 +46,19 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$[0].lastName", is("Glen")))
 			.andExpect(jsonPath("$[0].company", is("Amazon")))
 			.andExpect(jsonPath("$[0].position", is("Clerk")))
+			.andExpect(jsonPath("$[0].dto", is(true)))
 			.andExpect(jsonPath("$[1].id", is(3)))
 			.andExpect(jsonPath("$[1].firstName", is("Jane")))
 			.andExpect(jsonPath("$[1].lastName", is("Doe")))
 			.andExpect(jsonPath("$[1].company", is("Facebook")))
 			.andExpect(jsonPath("$[1].position", is("Director")))
+			.andExpect(jsonPath("$[1].dto", is(true)))
 			.andExpect(jsonPath("$[2].id", is(1)))
 			.andExpect(jsonPath("$[2].firstName", is("John")))
 			.andExpect(jsonPath("$[2].lastName", is("Burke")))
 			.andExpect(jsonPath("$[2].company", is("Google")))
-			.andExpect(jsonPath("$[2].position", is("Manager")));
+			.andExpect(jsonPath("$[2].position", is("Manager")))
+			.andExpect(jsonPath("$[2].dto", is(true)));;
 		
 	}
 	
@@ -70,7 +73,8 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("John")))
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
-			.andExpect(jsonPath("$.position", is("Manager")));
+			.andExpect(jsonPath("$.position", is("Manager")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 
 	
@@ -93,7 +97,8 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("Bill")))
 			.andExpect(jsonPath("$.lastName", is("Franklin")))
 			.andExpect(jsonPath("$.company", is("Twitch")))
-			.andExpect(jsonPath("$.position", is("Junior Manager")));
+			.andExpect(jsonPath("$.position", is("Junior Manager")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 	
 	@Test
@@ -115,7 +120,8 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("John")))
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
-			.andExpect(jsonPath("$.position", is("Vice President")));
+			.andExpect(jsonPath("$.position", is("Vice President")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 	
 	// @formatter:on

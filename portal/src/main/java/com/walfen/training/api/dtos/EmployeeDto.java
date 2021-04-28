@@ -12,8 +12,8 @@ private String position;
 private boolean dto;
 
 
-EmployeeDto(boolean dto){
-	dto = true;
+public EmployeeDto(){
+	this.dto = true;
 }
 
 public boolean isDto() {

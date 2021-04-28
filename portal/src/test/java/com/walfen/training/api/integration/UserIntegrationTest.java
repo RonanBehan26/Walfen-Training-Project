@@ -46,12 +46,15 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("$[0].id", is(1)))
 			.andExpect(jsonPath("$[0].firstName", is("John")))
 			.andExpect(jsonPath("$[0].lastName", is("Burke")))
+			.andExpect(jsonPath("$[0].dto", is(true)))
 			.andExpect(jsonPath("$[1].id", is(2)))
 			.andExpect(jsonPath("$[1].firstName", is("Pat")))
 			.andExpect(jsonPath("$[1].lastName", is("Glen")))
+			.andExpect(jsonPath("$[1].dto", is(true)))
 			.andExpect(jsonPath("$[2].id", is(3)))
 			.andExpect(jsonPath("$[2].firstName", is("Jane")))
-			.andExpect(jsonPath("$[2].lastName", is("Doe")));
+			.andExpect(jsonPath("$[2].lastName", is("Doe")))
+			.andExpect(jsonPath("$[2].dto", is(true)));
 
 	}
 	
@@ -64,7 +67,8 @@ public class UserIntegrationTest {
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
 			.andExpect(jsonPath("$.firstName", is("John")))
-			.andExpect(jsonPath("$.lastName", is("Burke")));
+			.andExpect(jsonPath("$.lastName", is("Burke")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 	
 	
@@ -82,7 +86,8 @@ public class UserIntegrationTest {
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id").exists()) 
 			.andExpect(jsonPath("$.firstName", is("Mary")))
-			.andExpect(jsonPath("$.lastName", is("Harty")));
+			.andExpect(jsonPath("$.lastName", is("Harty")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 	
 	@Test
@@ -100,7 +105,8 @@ public class UserIntegrationTest {
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$.id", is(1)))
 			.andExpect(jsonPath("$.firstName", is("Mary")))
-			.andExpect(jsonPath("$.lastName", is("Harty")));
+			.andExpect(jsonPath("$.lastName", is("Harty")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 	
 	// @formatter:on

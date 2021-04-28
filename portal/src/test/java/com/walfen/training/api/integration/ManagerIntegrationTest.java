@@ -45,24 +45,24 @@ public class ManagerIntegrationTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$", hasSize(3)))
-			
 			.andExpect(jsonPath("$[0].id", is(2)))
 			.andExpect(jsonPath("$[0].firstName", is("Joe")))
 			.andExpect(jsonPath("$[0].lastName", is("Keogh")))
 			.andExpect(jsonPath("$[0].company", is("Microsoft")))
 			.andExpect(jsonPath("$[0].birthday", is("1995-12-15")))
-			
+			.andExpect(jsonPath("$[0].dto", is(true)))
 			.andExpect(jsonPath("$[1].id", is(3)))
 			.andExpect(jsonPath("$[1].firstName", is("Tom")))
 			.andExpect(jsonPath("$[1].lastName", is("Rourke")))
 			.andExpect(jsonPath("$[1].company", is("Tesla")))
 			.andExpect(jsonPath("$[1].birthday", is("1986-08-11")))
-			
+			.andExpect(jsonPath("$[1].dto", is(true)))
 			.andExpect(jsonPath("$[2].id", is(1)))
 			.andExpect(jsonPath("$[2].firstName", is("Pipa")))			
 			.andExpect(jsonPath("$[2].lastName", is("Devlin")))
 			.andExpect(jsonPath("$[2].company", is("PwC")))
-			.andExpect(jsonPath("$[2].birthday", is("1978-11-22")));
+			.andExpect(jsonPath("$[2].birthday", is("1978-11-22")))
+			.andExpect(jsonPath("$[2].dto", is(true)));
 	}
 	
 	@Test                                                 //Test was successful
@@ -76,7 +76,8 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("Pipa")))
 			.andExpect(jsonPath("$.lastName", is("Devlin")))
 			.andExpect(jsonPath("$.company", is("PwC")))
-			.andExpect(jsonPath("$.birthday", is("1978-11-22")));
+			.andExpect(jsonPath("$.birthday", is("1978-11-22")))
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 
 	@Test
@@ -97,7 +98,8 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("Bill")))
 			.andExpect(jsonPath("$.lastName", is("Franklin")))
 			.andExpect(jsonPath("$.company", is("Twitch")))
-			.andExpect(jsonPath("$.birthday", is("1983-09-01")));
+			.andExpect(jsonPath("$.birthday", is("1983-09-01")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 	
 	@Test
@@ -119,7 +121,8 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.firstName", is("John")))
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
-			.andExpect(jsonPath("$.birthday", is("1983-09-01")));
+			.andExpect(jsonPath("$.birthday", is("1983-09-01")))
+			.andExpect(jsonPath("$.dto", is(true)));;
 	}
 		
 	@Test

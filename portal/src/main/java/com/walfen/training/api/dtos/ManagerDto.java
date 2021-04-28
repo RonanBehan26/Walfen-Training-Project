@@ -11,8 +11,8 @@ public class ManagerDto {
 	private LocalDate birthday;
 	private boolean dto;
 	
-	public ManagerDto(boolean dto) {
-		dto = true;
+	public ManagerDto() {
+		this.dto = true;
 	}
 	
 	public long getId() {

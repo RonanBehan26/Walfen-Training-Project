@@ -7,8 +7,8 @@ public class UserDto {
 	private String lastName;
 	private boolean dto;
 	
-	public UserDto(boolean dto) {
-		dto = true;
+	public UserDto() {
+		this.dto = true;
 	}
 	
 	public long getId() {
