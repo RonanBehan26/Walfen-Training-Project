@@ -1,4 +1,4 @@
-package com.walfen.training.api.entities;
+package com.walfen.training.api.zoo;
 
 public class Tiger extends Animal implements Carnivore {
 
@@ -24,9 +24,8 @@ public class Tiger extends Animal implements Carnivore {
 
 
 	@Override
-	String getType() {
-		// TODO Auto-generated method stub
-		return ("Tiger");
+	public String getType() {
+		return "Tiger";
 	}
 
 }

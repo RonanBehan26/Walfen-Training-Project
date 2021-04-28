@@ -1,13 +1,12 @@
-package com.walfen.training.api.entities;
+package com.walfen.training.api.zoo;
 
 public class Shark extends Animal implements Carnivore {
 	
 	public String ocean;
 	
 	@Override
-	String getType() {
-		// TODO Auto-generated method stub
-		return ("Shark");
+	public String getType() {
+		return "Shark";
 	}
 
 

@@ -1,11 +1,11 @@
-package com.walfen.training.api.entities;
+package com.walfen.training.api.zoo;
 
 public abstract class Animal {
 	
 	private long id;
 	
-	abstract String getType(); 
-	//I don't think this needs the keyword abstract as it is so by default
+	public abstract String getType(); 
+	
 	
 
 	public long getId() {

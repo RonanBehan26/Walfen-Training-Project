@@ -1,4 +1,4 @@
-package com.walfen.training.api.entities;
+package com.walfen.training.api.zoo;
 
 public interface Carnivore {
 	
