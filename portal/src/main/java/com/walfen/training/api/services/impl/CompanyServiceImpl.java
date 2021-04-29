@@ -24,9 +24,9 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Company> list() {
-		LOGGER.info("Sort by name");
+		LOGGER.info("List Companies");
 
-		return companyDao.findAllByOrderByName();
+		return companyDao.findAll();
 	}
 	
 	@Override
@@ -35,6 +35,16 @@ public class CompanyServiceImpl implements CompanyService {
 		LOGGER.info("Sort by city Desc");
 
 		return companyDao.findByOrderByCityDesc();
+	}
+
+
+	@Override
+	@Transactional
+	public Company get(String city) {
+		
+		LOGGER.info("Filter By Madrid");
+		
+		return companyDao.findByCityMadrid();
 	}
 
 

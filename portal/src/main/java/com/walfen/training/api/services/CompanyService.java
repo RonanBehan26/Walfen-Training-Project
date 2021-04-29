@@ -10,4 +10,6 @@ public interface CompanyService {
 	
 	List<Company> listCityDesc();
 
+	Company get(String city);
+
 }
