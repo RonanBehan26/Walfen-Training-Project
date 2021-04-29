@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.walfen.training.api.daos.CompanyDao;
 import com.walfen.training.api.entities.Company;
@@ -19,12 +20,22 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Resource
 	private CompanyDao companyDao;
-
+	
 	@Override
+	@Transactional(readOnly = true)
 	public List<Company> list() {
-		LOGGER.info("list companies");
+		LOGGER.info("Sort by name");
 
-		return companyDao.findAll();
+		return companyDao.findAllByOrderByName();
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Company> listCityDesc() {
+		LOGGER.info("Sort by city Desc");
+
+		return companyDao.findByOrderByCityDesc();
+	}
+
 
 }

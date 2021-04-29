@@ -34,7 +34,7 @@ public class CompanyIntegrationTest {
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testList() throws Exception {
-		mvc.perform(get("/companies")
+		mvc.perform(get("/companies/name-sorted")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -51,5 +51,23 @@ public class CompanyIntegrationTest {
 	}
 	
 	// @formatter:on
-
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testListCity() throws Exception {
+		mvc.perform(get("/companies/city-sorted-desc")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$", hasSize(3)))
+			.andExpect(jsonPath("$[0].id", is(3)))
+			.andExpect(jsonPath("$[0].name", is("Company 3")))
+			.andExpect(jsonPath("$[0].city", is("Madrid")))
+			.andExpect(jsonPath("$[1].id", is(1)))
+			.andExpect(jsonPath("$[1].name", is("Company 1")))
+			.andExpect(jsonPath("$[1].city", is("Krakow")))
+			.andExpect(jsonPath("$[2].id", is(2)))
+			.andExpect(jsonPath("$[2].name", is("Company 2")))
+			.andExpect(jsonPath("$[2].city", is("Cork")));
+				
+	}
 }
