@@ -58,7 +58,7 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$[2].lastName", is("Burke")))
 			.andExpect(jsonPath("$[2].company", is("Google")))
 			.andExpect(jsonPath("$[2].position", is("Manager")))
-			.andExpect(jsonPath("$[2].dto", is(true)));;
+			.andExpect(jsonPath("$[2].dto", is(true)));
 		
 	}
 	
@@ -74,7 +74,7 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
 			.andExpect(jsonPath("$.position", is("Manager")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 
 	
@@ -98,7 +98,7 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$.lastName", is("Franklin")))
 			.andExpect(jsonPath("$.company", is("Twitch")))
 			.andExpect(jsonPath("$.position", is("Junior Manager")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	@Test
@@ -121,7 +121,7 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
 			.andExpect(jsonPath("$.position", is("Vice President")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	// @formatter:on

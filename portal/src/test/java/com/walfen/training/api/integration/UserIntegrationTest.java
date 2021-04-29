@@ -68,7 +68,7 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("$.id", is(1)))
 			.andExpect(jsonPath("$.firstName", is("John")))
 			.andExpect(jsonPath("$.lastName", is("Burke")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	
@@ -87,7 +87,7 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("$.id").exists()) 
 			.andExpect(jsonPath("$.firstName", is("Mary")))
 			.andExpect(jsonPath("$.lastName", is("Harty")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("$.id", is(1)))
 			.andExpect(jsonPath("$.firstName", is("Mary")))
 			.andExpect(jsonPath("$.lastName", is("Harty")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	// @formatter:on

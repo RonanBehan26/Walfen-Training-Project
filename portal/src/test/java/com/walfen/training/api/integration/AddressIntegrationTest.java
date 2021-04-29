@@ -55,7 +55,7 @@ public class AddressIntegrationTest {
 			.andExpect(jsonPath("$[2].street", is("Grafton")))
 			.andExpect(jsonPath("$[2].city", is("Dublin")))
 			.andExpect(jsonPath("$[2].country", is("Ireland")))
-			.andExpect(jsonPath("$[2].dto", is(true)));;
+			.andExpect(jsonPath("$[2].dto", is(true)));
 
 	}
 	
@@ -71,7 +71,7 @@ public class AddressIntegrationTest {
 			.andExpect(jsonPath("$.street", is("Cahirdown")))
 			.andExpect(jsonPath("$.city", is("Listowel")))
 			.andExpect(jsonPath("$.country", is("Ireland")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 		
 	}
 	
@@ -93,7 +93,7 @@ public class AddressIntegrationTest {
 			.andExpect(jsonPath("$.street", is("BagEnd")))//You are verifying the above here
 			.andExpect(jsonPath("$.city", is("Shire")))
 			.andExpect(jsonPath("$.country", is("MiddleEarth")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	@Test
@@ -114,7 +114,7 @@ public class AddressIntegrationTest {
 			.andExpect(jsonPath("$.street", is("Dromin")))//verifying the above
 			.andExpect(jsonPath("$.city", is("Tralee")))
 			.andExpect(jsonPath("$.country", is("Ireland")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	// @formatter:on

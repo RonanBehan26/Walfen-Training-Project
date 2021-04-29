@@ -99,7 +99,7 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.lastName", is("Franklin")))
 			.andExpect(jsonPath("$.company", is("Twitch")))
 			.andExpect(jsonPath("$.birthday", is("1983-09-01")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 	
 	@Test
@@ -122,7 +122,7 @@ public class ManagerIntegrationTest {
 			.andExpect(jsonPath("$.lastName", is("Burke")))
 			.andExpect(jsonPath("$.company", is("Google")))
 			.andExpect(jsonPath("$.birthday", is("1983-09-01")))
-			.andExpect(jsonPath("$.dto", is(true)));;
+			.andExpect(jsonPath("$.dto", is(true)));
 	}
 		
 	@Test
