@@ -13,9 +13,8 @@ public interface CompanyService {
 	
 	List<Company> listByCitySorted();
 	
-//
-	List<Company> listByCity(String searchText);
-	//Company getCityMadrid(String city);
+	List<Company> listByCity(String city);
+
 
 
 }
