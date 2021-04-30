@@ -53,7 +53,7 @@ public class CompanyIntegrationTest {
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
-	public void testListCity() throws Exception {
+	public void testListByCitySorted() throws Exception {
 		mvc.perform(get("/companies/city-sorted-desc")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
@@ -67,20 +67,19 @@ public class CompanyIntegrationTest {
 			.andExpect(jsonPath("$[1].city", is("Krakow")))
 			.andExpect(jsonPath("$[2].id", is(2)))
 			.andExpect(jsonPath("$[2].name", is("Company 2")))
-			.andExpect(jsonPath("$[2].city", is("Cork")));
-				
+			.andExpect(jsonPath("$[2].city", is("Cork")));		
 	}
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
-	public void testListFilterMadrid() throws Exception {
-		mvc.perform(get("/companies/city-filtered?city=Madrid", 3)
+	public void testGetCityMadrid() throws Exception {
+		mvc.perform(get("/companies/city-filtered?city=Madrid") //this is the api endpoint to be called
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$", hasSize(1)))
 			.andExpect(jsonPath("$[0].id", is(3)))
-			.andExpect(jsonPath("$[0].city", is("Madrid")));				
+			.andExpect(jsonPath("$[0].name", is("Company 3")))
+			.andExpect(jsonPath("$[0].city", is("Madrid")));
 	}
 	
 	// @formatter:on
