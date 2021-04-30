@@ -34,7 +34,7 @@ public class CompanyIntegrationTest {
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testList() throws Exception {
-		mvc.perform(get("/companies")
+		mvc.perform(get("/companies/name-sorted")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -42,14 +42,52 @@ public class CompanyIntegrationTest {
 			.andExpect(jsonPath("$[0].id", is(1)))
 			.andExpect(jsonPath("$[0].name", is("Company 1")))
 			.andExpect(jsonPath("$[0].city", is("Krakow")))
+			.andExpect(jsonPath("$[0].dto", is(true)))
 			.andExpect(jsonPath("$[1].id", is(2)))
 			.andExpect(jsonPath("$[1].name", is("Company 2")))
 			.andExpect(jsonPath("$[1].city", is("Cork")))
+			.andExpect(jsonPath("$[1].dto", is(true)))
 			.andExpect(jsonPath("$[2].id", is(3)))
 			.andExpect(jsonPath("$[2].name", is("Company 3")))
-			.andExpect(jsonPath("$[2].city", is("Madrid")));	
+			.andExpect(jsonPath("$[2].city", is("Madrid")))
+			.andExpect(jsonPath("$[2].dto", is(true)));	
+	}
+	
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testListByCitySorted() throws Exception {
+		mvc.perform(get("/companies/city-sorted-desc")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$", hasSize(3)))
+			.andExpect(jsonPath("$[0].id", is(3)))
+			.andExpect(jsonPath("$[0].name", is("Company 3")))
+			.andExpect(jsonPath("$[0].city", is("Madrid")))
+			.andExpect(jsonPath("$[0].dto", is(true)))
+			.andExpect(jsonPath("$[1].id", is(1)))
+			.andExpect(jsonPath("$[1].name", is("Company 1")))
+			.andExpect(jsonPath("$[1].city", is("Krakow")))
+			.andExpect(jsonPath("$[1].dto", is(true)))
+			.andExpect(jsonPath("$[2].id", is(2)))
+			.andExpect(jsonPath("$[2].name", is("Company 2")))
+			.andExpect(jsonPath("$[2].city", is("Cork")))
+			.andExpect(jsonPath("$[2].dto", is(true)));		
+	}
+	
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })
+	public void testGetCityMadrid() throws Exception {
+		mvc.perform(get("/companies/city-filtered?city=Madrid") //this is the api endpoint to be called
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$[0].id", is(3)))
+			.andExpect(jsonPath("$[0].name", is("Company 3")))
+			.andExpect(jsonPath("$[0].city", is("Madrid")))
+			.andExpect(jsonPath("$[0].dto", is(true)));
 	}
 	
 	// @formatter:on
-
 }
