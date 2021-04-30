@@ -6,14 +6,11 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
 import com.walfen.training.api.daos.CompanyDao;
 import com.walfen.training.api.entities.Company;
-import com.walfen.training.api.entities.Employee;
 import com.walfen.training.api.services.CompanyService;
 
 @Service
@@ -50,21 +47,11 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	@Transactional (readOnly = true)
-	//public Company getCityMadrid(String city) 
-	public List<Company> listByCity(String searchText){
-		// TODO Auto-generated method stub
+	public List<Company> listByCity(String city){
 		LOGGER.info("get company - city: {}");
 		
-		return companyDao.findAllByCity("Madrid");
+		return companyDao.findAllByCity(city);
 	}
-
-	//List<Company> findAllByCity(String city);
-//	@Override
-//	@Transactional
-//	public Employee get(Long id) {
-//		LOGGER.info("get employee - id: {}", id);
-//		return employeeDao.findById(id).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
-//	}
 	
 	
 
