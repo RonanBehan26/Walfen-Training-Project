@@ -42,12 +42,15 @@ public class CompanyIntegrationTest {
 			.andExpect(jsonPath("$[0].id", is(1)))
 			.andExpect(jsonPath("$[0].name", is("Company 1")))
 			.andExpect(jsonPath("$[0].city", is("Krakow")))
+			.andExpect(jsonPath("$[0].dto", is(true)))
 			.andExpect(jsonPath("$[1].id", is(2)))
 			.andExpect(jsonPath("$[1].name", is("Company 2")))
 			.andExpect(jsonPath("$[1].city", is("Cork")))
+			.andExpect(jsonPath("$[1].dto", is(true)))
 			.andExpect(jsonPath("$[2].id", is(3)))
 			.andExpect(jsonPath("$[2].name", is("Company 3")))
-			.andExpect(jsonPath("$[2].city", is("Madrid")));	
+			.andExpect(jsonPath("$[2].city", is("Madrid")))
+			.andExpect(jsonPath("$[2].dto", is(true)));	
 	}
 	
 	
@@ -62,12 +65,15 @@ public class CompanyIntegrationTest {
 			.andExpect(jsonPath("$[0].id", is(3)))
 			.andExpect(jsonPath("$[0].name", is("Company 3")))
 			.andExpect(jsonPath("$[0].city", is("Madrid")))
+			.andExpect(jsonPath("$[0].dto", is(true)))
 			.andExpect(jsonPath("$[1].id", is(1)))
 			.andExpect(jsonPath("$[1].name", is("Company 1")))
 			.andExpect(jsonPath("$[1].city", is("Krakow")))
+			.andExpect(jsonPath("$[1].dto", is(true)))
 			.andExpect(jsonPath("$[2].id", is(2)))
 			.andExpect(jsonPath("$[2].name", is("Company 2")))
-			.andExpect(jsonPath("$[2].city", is("Cork")));		
+			.andExpect(jsonPath("$[2].city", is("Cork")))
+			.andExpect(jsonPath("$[2].dto", is(true)));		
 	}
 	
 	@Test
@@ -79,7 +85,8 @@ public class CompanyIntegrationTest {
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 			.andExpect(jsonPath("$[0].id", is(3)))
 			.andExpect(jsonPath("$[0].name", is("Company 3")))
-			.andExpect(jsonPath("$[0].city", is("Madrid")));
+			.andExpect(jsonPath("$[0].city", is("Madrid")))
+			.andExpect(jsonPath("$[0].dto", is(true)));
 	}
 	
 	// @formatter:on
