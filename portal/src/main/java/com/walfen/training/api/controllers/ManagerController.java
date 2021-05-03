@@ -31,7 +31,6 @@ public class ManagerController {
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<ManagerDto> list() {
-		
 		List<Manager> managers = managerService.list();
 		
 		return managers.stream().map( a -> mapper.map(a, ManagerDto.class)).collect(Collectors.toList());
@@ -57,7 +56,6 @@ public class ManagerController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ManagerDto update(@PathVariable Long id, @RequestBody Manager manager) {
-		
 		manager = managerService.update(manager);
 
 		return mapper.map(manager, ManagerDto.class);

@@ -78,8 +78,9 @@ public class CompanyIntegrationTest {
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
-	public void testGetCityMadrid() throws Exception {
-		mvc.perform(get("/companies/city-filtered?city=Madrid") //this is the api endpoint to be called
+	public void testListCityMadrid() throws Exception {
+		mvc.perform(get("/companies")
+				.param("city", "Madrid")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
