@@ -40,19 +40,21 @@ public class EmployeeController {
 	}
 	
 	
-/////////////////////////	
+/////////////////////////	P1
 	@RequestMapping(path = "/filtered-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<EmployeeDto> list1() {
+	public List<EmployeeDto> list1(String company) {
 		
-		List<Employee> employees = employeeService.list1();
+		List<Employee> employees = employeeService.list1(company);
 
 		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
 	}
 	
+	
+	/////////////////////P2
 	@RequestMapping(path = "/filtered-containing-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<EmployeeDto> list2() {
+	public List<EmployeeDto> list2(String company) {
 		
-		List<Employee> employees = employeeService.list2();
+		List<Employee> employees = employeeService.list2(company);
 
 		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
 	}

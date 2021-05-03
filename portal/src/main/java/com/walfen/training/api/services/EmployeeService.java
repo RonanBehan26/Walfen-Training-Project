@@ -20,9 +20,9 @@ public interface EmployeeService {
 	
 	
 
-	List<Employee> list1();
+	List<Employee> list1(String company);
 
-	List<Employee> list2();
+	List<Employee> list2(String company);
 
 //	/////////// Part 1
 ////	List<Employee> listByCompanyAndLastName(String company);

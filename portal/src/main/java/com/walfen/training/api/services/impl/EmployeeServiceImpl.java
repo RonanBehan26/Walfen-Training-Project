@@ -71,18 +71,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Employee> list1() {
+	public List<Employee> list1(String company) {
 		LOGGER.info("list Employee Companies");
 
-		return employeeDao.findAllByCompanyAndOrderByLastName();
+		return employeeDao.findByCompanyOrderByLastName(company);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Employee> list2() {
-		LOGGER.info("list Company lastName");
+	public List<Employee> list2(String company) {
+		LOGGER.info("list Company oo & lastName");
 
-		return employeeDao.existsByCompanyContainingAndOrderByLastNameDesc();
+		return employeeDao.findByCompanyContainingOrderByLastNameDesc(company);
 	}
 	
 	

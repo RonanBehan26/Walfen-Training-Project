@@ -80,39 +80,12 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 	
 	
 	
-//P1
-	List<Employee> findAllByCompanyAndOrderByLastName();
-	
-	//P2
-	//boolean existsByCompanyContainingAndOrderByLastNameDesc(String company, String firstName);
+//P1 - List employees filtered by company equals to the parameter and sorted by last name:
+	List<Employee> findByCompanyOrderByLastName(String company);
 
-
-	List<Employee> existsByCompanyContainingAndOrderByLastNameDesc();
-		
-
-	////////Part 1
-	//List<Employee> findAllByCompanyAndOrderByLastName(String company, String lastName);
+//P2 - List employees filtered by company containing a text and sorted by last name descending:
+	List<Employee> findByCompanyContainingOrderByLastNameDesc(String company);
 	
-	
-	//boolean existsByCompanyAndOrderByLastName(String company, String lastName);
-	
-
-	//List<Employee> findAllByCompanyOrderByLastName();
-
-	//Optional<Employee> existsByCompanyOrderByLastName(String company);
-
-	
-//	//Part2
-//	List<Employee> findByCompanyContainingAndOrderByLastnameDesc(String company, String lastName);
-	
-	
-
-	
-
-	
-
-	
-
 	
 }
 

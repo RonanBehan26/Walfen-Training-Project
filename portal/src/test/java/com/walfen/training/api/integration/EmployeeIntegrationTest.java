@@ -148,6 +148,7 @@ public class EmployeeIntegrationTest {
 	@Sql(scripts = { "classpath:db/sql/all.sql" })   //Test was successful
 	public void testListCompanyLastName() throws Exception {
 		mvc.perform(get("/employees/filtered-and-sorted") //this is the api endpoint to be called
+				.param("company", "Google")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -156,54 +157,33 @@ public class EmployeeIntegrationTest {
 			.andExpect(jsonPath("$[0].firstName", is("John")))
 			.andExpect(jsonPath("$[0].lastName", is("Burke")))
 			.andExpect(jsonPath("$[0].company", is("Google")))
-			.andExpect(jsonPath("$[1].position", is("Manager")))
-			.andExpect(jsonPath("$[1].dto", is(true)));
+			.andExpect(jsonPath("$[0].position", is("Manager")))
+			.andExpect(jsonPath("$[0].dto", is(true)));
 	}
 	
-
-	
-	
-	
-	
-//@Test
-//@Sql(scripts = { "classpath:db/sql/all.sql" })
-//public void testGetCompanyLastName() throws Exception {
-//	
-//	boolean employees = employeeDao.existsByCompanyAndOrderByLastName("Google", "Burke");
-//	
-//	assertEquals(employees, true);
-//		
-//}	
-//}
-
-//@Test
-//@Sql(scripts = { "classpath:db/sql/all.sql" })
-//public void testCompanyJane() throws Exception {
-//
-//	Long employees = employeeDao.existsByCompanyAndOrderByLastName("Google", "Burke");
-//	
-//	assertEquals(employees, true);
-//	
-//}
-
-
-
 
 //////////// Part 2
 @Test
 @Sql(scripts = { "classpath:db/sql/all.sql" })
 public void testListCompanyContainsLastNameDesc() throws Exception {
 	mvc.perform(get("/employees/filtered-containing-and-sorted")
+			.param("company", "oo")
 		.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(jsonPath("$", hasSize(2)))
+		.andExpect(jsonPath("$[0].id", is(3)))
 		.andExpect(jsonPath("$[0].firstName", is("Jane")))
 		.andExpect(jsonPath("$[0].lastName", is("Doe")))
 		.andExpect(jsonPath("$[0].company", is("Facebook")))
+		.andExpect(jsonPath("$[0].position", is("Director")))
+		.andExpect(jsonPath("$[0].dto", is(true)))
+		.andExpect(jsonPath("$[1].id", is(1)))
 		.andExpect(jsonPath("$[1].firstName", is("John")))
 		.andExpect(jsonPath("$[1].lastName", is("Burke")))
-		.andExpect(jsonPath("$[1].company", is("Google")));
+		.andExpect(jsonPath("$[1].company", is("Google")))
+		.andExpect(jsonPath("$[1].position", is("Manager")))
+		.andExpect(jsonPath("$[1].dto", is(true)));
 }
 
 
