@@ -39,28 +39,21 @@ public class EmployeeController {
 		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
 	}
 	
-	
-/////////////////////////	P1
 	@RequestMapping(path = "/filtered-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<EmployeeDto> list1(String company) {
+	public List<EmployeeDto> listFilteredCompanySortedLastName(String company) {
 		
-		List<Employee> employees = employeeService.list1(company);
+		List<Employee> employees = employeeService.listFilteredCompanySortedLastName(company);
 
 		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
 	}
 	
-	
-	/////////////////////P2
 	@RequestMapping(path = "/filtered-containing-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<EmployeeDto> list2(String company) {
+	public List<EmployeeDto> listFilteredCompanySortedLastNameDesc(String company) {
 		
-		List<Employee> employees = employeeService.list2(company);
+		List<Employee> employees = employeeService.listFilteredCompanySortedLastNameDesc(company);
 
 		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
 	}
-
-///////////////////////
-	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeDto get(@PathVariable Long id) {
@@ -69,7 +62,6 @@ public class EmployeeController {
 		return mapper.map(employee, EmployeeDto.class);
 	}
 			
-
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeDto create(@RequestBody EmployeeDto employeeDto) {
@@ -79,7 +71,6 @@ public class EmployeeController {
 		return mapper.map(employee, EmployeeDto.class);
 	}
 	
-
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeDto update(@PathVariable Long id, @RequestBody Employee employee) {
 		
@@ -88,32 +79,10 @@ public class EmployeeController {
 		return mapper.map(employee, EmployeeDto.class);
 	}
 	
-	
-	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		employeeService.delete(id);
 	}
 	
-	
-//	///////////////////////// Part 1	
-//	@RequestMapping(value = "/filtered-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public EmployeeDto get(String company) {
-//		Employee employee = employeeService.getCompany(company);
-//
-//		return mapper.map(employee, EmployeeDto.class);
-//	}
-//	
-//	
-//	///////////////////////// Part 2
-//	@RequestMapping(path = "/filtered-containing-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public List<EmployeeDto> listByCompanyContainingAndSorted(String company, String lastName) {
-//		
-//		List<Employee> employees = employeeService.listByCompanyContainingAndSorted(company, lastName);//returns the company without sorting, so we must set it up to sort
-//
-//		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
-//	}
-
-
 }

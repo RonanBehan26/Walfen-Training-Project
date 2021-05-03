@@ -71,7 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Employee> list1(String company) {
+	public List<Employee> listFilteredCompanySortedLastName(String company) {
 		LOGGER.info("list Employee Companies");
 
 		return employeeDao.findByCompanyOrderByLastName(company);
@@ -79,30 +79,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Employee> list2(String company) {
+	public List<Employee> listFilteredCompanySortedLastNameDesc(String company) {
 		LOGGER.info("list Company oo & lastName");
 
 		return employeeDao.findByCompanyContainingOrderByLastNameDesc(company);
 	}
-	
-	
-///////////// Part 1 
-//@Override
-//@Transactional(readOnly = true)
-//public Employee getCompany(String company) {
-//LOGGER.info("get company and sort by last name");
-//return employeeDao.existsByCompanyOrderByLastName(company).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
-//}
-
-
-/////////////// Part 2
-//@Override
-//@Transactional(readOnly = true)
-//public List<Employee> listByCompanyContainingAndSorted(String company, String lastName) {
-//LOGGER.info("list by company and sort by last name");
-//return employeeDao.findByCompanyContainingAndOrderByLastnameDesc(company, lastName);
-//}
-
-
 
 }

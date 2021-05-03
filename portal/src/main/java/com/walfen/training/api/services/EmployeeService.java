@@ -16,20 +16,8 @@ public interface EmployeeService {
 	Employee update(Employee employee);
 
 	void delete(Long id);
-	
-	
-	
 
-	List<Employee> list1(String company);
+	List<Employee> listFilteredCompanySortedLastName(String company);
 
-	List<Employee> list2(String company);
-
-//	/////////// Part 1
-////	List<Employee> listByCompanyAndLastName(String company);
-//	Employee getCompany(String company);
-//	
-//	////////// Part 2
-//
-//	List<Employee> listByCompanyContainingAndSorted(String company, String lastName);
-
+	List<Employee> listFilteredCompanySortedLastNameDesc(String company);
 }

@@ -37,9 +37,6 @@ public class EmployeeIntegrationTest {
 	@Resource
 	private ObjectMapper objectMapper;
 	
-	@Resource
-	private EmployeeDao employeeDao;
-	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
 	public void testList() throws Exception {
