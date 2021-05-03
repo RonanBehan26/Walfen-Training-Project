@@ -41,6 +41,9 @@ public class AddressController {
 		}
 		
 		
+		
+		
+		
 		@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 		public AddressDto get(@PathVariable Long id) {
 			Address address = addressService.get(id);
@@ -48,6 +51,9 @@ public class AddressController {
 			return mapper.map(address, AddressDto.class);
 		}
 				
+		
+		
+		
 
 		@ResponseStatus(HttpStatus.CREATED)
 		@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +63,9 @@ public class AddressController {
 
 			return mapper.map(address, AddressDto.class);
 		}
-				
+			
+		
+		
 
 		@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 		public AddressDto update(@PathVariable Long id, @RequestBody Address address) {
@@ -67,6 +75,8 @@ public class AddressController {
 			return mapper.map(address, AddressDto.class);
 		}
 				
+		
+		
 		
 		@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 		@ResponseStatus(HttpStatus.NO_CONTENT)

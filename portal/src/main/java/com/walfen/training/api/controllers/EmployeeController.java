@@ -40,6 +40,25 @@ public class EmployeeController {
 	}
 	
 	
+/////////////////////////	
+	@RequestMapping(path = "/filtered-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<EmployeeDto> list1() {
+		
+		List<Employee> employees = employeeService.list1();
+
+		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
+	}
+	
+	@RequestMapping(path = "/filtered-containing-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<EmployeeDto> list2() {
+		
+		List<Employee> employees = employeeService.list2();
+
+		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
+	}
+
+///////////////////////
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public EmployeeDto get(@PathVariable Long id) {
@@ -74,6 +93,25 @@ public class EmployeeController {
 	public void delete(@PathVariable Long id) {
 		employeeService.delete(id);
 	}
+	
+	
+//	///////////////////////// Part 1	
+//	@RequestMapping(value = "/filtered-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//	public EmployeeDto get(String company) {
+//		Employee employee = employeeService.getCompany(company);
+//
+//		return mapper.map(employee, EmployeeDto.class);
+//	}
+//	
+//	
+//	///////////////////////// Part 2
+//	@RequestMapping(path = "/filtered-containing-and-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<EmployeeDto> listByCompanyContainingAndSorted(String company, String lastName) {
+//		
+//		List<Employee> employees = employeeService.listByCompanyContainingAndSorted(company, lastName);//returns the company without sorting, so we must set it up to sort
+//
+//		return employees.stream().map( a -> mapper.map(a, EmployeeDto.class)).collect(Collectors.toList());
+//	}
 
 
 }

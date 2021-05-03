@@ -1,6 +1,7 @@
 package com.walfen.training.api.daos;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -38,7 +39,7 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 	
 	List<Employee> findAllByCompanyOrCompany(String company, String company2);
 
-	List<Employee> findAllByFirstNameStartsWithAndCompany(String firstName, String company);
+	List<Employee> findAllByFirstNameStartsWithAndCompany(String firstName, String company); //////////////
 
 	List<Employee> findAllByLastName(String lastName);
 	
@@ -72,10 +73,37 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 
 	boolean existsByCompanyOrCompany(String company, String company2);
 
-	boolean existsByCompanyAndFirstNameStartsWith(String company, String firstName);
+	boolean existsByCompanyAndFirstNameStartsWith(String company, String firstName);/////////////////
 
 	boolean existsByLastName(String lastName);
 	
+	
+	
+	
+//P1
+	List<Employee> findAllByCompanyAndOrderByLastName();
+	
+	//P2
+	//boolean existsByCompanyContainingAndOrderByLastNameDesc(String company, String firstName);
+
+
+	List<Employee> existsByCompanyContainingAndOrderByLastNameDesc();
+		
+
+	////////Part 1
+	//List<Employee> findAllByCompanyAndOrderByLastName(String company, String lastName);
+	
+	
+	//boolean existsByCompanyAndOrderByLastName(String company, String lastName);
+	
+
+	//List<Employee> findAllByCompanyOrderByLastName();
+
+	//Optional<Employee> existsByCompanyOrderByLastName(String company);
+
+	
+//	//Part2
+//	List<Employee> findByCompanyContainingAndOrderByLastnameDesc(String company, String lastName);
 	
 	
 

@@ -2,6 +2,7 @@ package com.walfen.training.api.integration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -9,6 +10,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -21,6 +24,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.walfen.training.api.daos.EmployeeDao;
 import com.walfen.training.api.entities.Employee;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -32,6 +36,9 @@ public class EmployeeIntegrationTest {
 
 	@Resource
 	private ObjectMapper objectMapper;
+	
+	@Resource
+	private EmployeeDao employeeDao;
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
@@ -133,5 +140,71 @@ public class EmployeeIntegrationTest {
 		mvc.perform(delete("/users/{id}", 1))
 			.andExpect(status().isNoContent());	
 	}
+
+
+
+/////// Part 1
+	@Test
+	@Sql(scripts = { "classpath:db/sql/all.sql" })   //Test was successful
+	public void testListCompanyLastName() throws Exception {
+		mvc.perform(get("/employees/filtered-and-sorted") //this is the api endpoint to be called
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$", hasSize(1)))
+			.andExpect(jsonPath("$[0].id", is(1)))
+			.andExpect(jsonPath("$[0].firstName", is("John")))
+			.andExpect(jsonPath("$[0].lastName", is("Burke")))
+			.andExpect(jsonPath("$[0].company", is("Google")))
+			.andExpect(jsonPath("$[1].position", is("Manager")))
+			.andExpect(jsonPath("$[1].dto", is(true)));
+	}
+	
+
+	
+	
+	
+	
+//@Test
+//@Sql(scripts = { "classpath:db/sql/all.sql" })
+//public void testGetCompanyLastName() throws Exception {
+//	
+//	boolean employees = employeeDao.existsByCompanyAndOrderByLastName("Google", "Burke");
+//	
+//	assertEquals(employees, true);
+//		
+//}	
+//}
+
+//@Test
+//@Sql(scripts = { "classpath:db/sql/all.sql" })
+//public void testCompanyJane() throws Exception {
+//
+//	Long employees = employeeDao.existsByCompanyAndOrderByLastName("Google", "Burke");
+//	
+//	assertEquals(employees, true);
+//	
+//}
+
+
+
+
+//////////// Part 2
+@Test
+@Sql(scripts = { "classpath:db/sql/all.sql" })
+public void testListCompanyContainsLastNameDesc() throws Exception {
+	mvc.perform(get("/employees/filtered-containing-and-sorted")
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
+		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+		.andExpect(jsonPath("$", hasSize(2)))
+		.andExpect(jsonPath("$[0].firstName", is("Jane")))
+		.andExpect(jsonPath("$[0].lastName", is("Doe")))
+		.andExpect(jsonPath("$[0].company", is("Facebook")))
+		.andExpect(jsonPath("$[1].firstName", is("John")))
+		.andExpect(jsonPath("$[1].lastName", is("Burke")))
+		.andExpect(jsonPath("$[1].company", is("Google")));
 }
 
+
+}

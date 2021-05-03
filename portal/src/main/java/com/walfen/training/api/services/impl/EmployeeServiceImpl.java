@@ -13,6 +13,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.walfen.training.api.daos.EmployeeDao;
 import com.walfen.training.api.entities.Employee;
+import com.walfen.training.api.entities.Manager;
 import com.walfen.training.api.services.EmployeeService;
 
 @Service
@@ -29,7 +30,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		LOGGER.info("list users");
 
 		return employeeDao.findAllByOrderByPosition();
-	}
+	}	
+	
 	
 	@Override
 	@Transactional
@@ -66,5 +68,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.deleteById(id);
 		
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Employee> list1() {
+		LOGGER.info("list Employee Companies");
+
+		return employeeDao.findAllByCompanyAndOrderByLastName();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Employee> list2() {
+		LOGGER.info("list Company lastName");
+
+		return employeeDao.existsByCompanyContainingAndOrderByLastNameDesc();
+	}
+	
+	
+///////////// Part 1 
+//@Override
+//@Transactional(readOnly = true)
+//public Employee getCompany(String company) {
+//LOGGER.info("get company and sort by last name");
+//return employeeDao.existsByCompanyOrderByLastName(company).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+//}
+
+
+/////////////// Part 2
+//@Override
+//@Transactional(readOnly = true)
+//public List<Employee> listByCompanyContainingAndSorted(String company, String lastName) {
+//LOGGER.info("list by company and sort by last name");
+//return employeeDao.findByCompanyContainingAndOrderByLastnameDesc(company, lastName);
+//}
+
+
 
 }
