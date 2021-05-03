@@ -14,6 +14,4 @@ public interface CompanyDao extends JpaRepository<Company, Long> {
 
 	List<Company> findAllByCity(String city);
 
-
-
 }

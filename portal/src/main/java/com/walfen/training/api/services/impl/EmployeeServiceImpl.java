@@ -13,6 +13,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.walfen.training.api.daos.EmployeeDao;
 import com.walfen.training.api.entities.Employee;
+import com.walfen.training.api.entities.Manager;
 import com.walfen.training.api.services.EmployeeService;
 
 @Service
@@ -29,7 +30,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		LOGGER.info("list users");
 
 		return employeeDao.findAllByOrderByPosition();
-	}
+	}	
+	
 	
 	@Override
 	@Transactional
@@ -65,6 +67,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		employeeDao.deleteById(id);
 		
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Employee> listFilteredCompanySortedLastName(String company) {
+		LOGGER.info("list Employee Companies");
+
+		return employeeDao.findByCompanyOrderByLastName(company);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Employee> listFilteredCompanySortedLastNameDesc(String company) {
+		LOGGER.info("list Company oo & lastName");
+
+		return employeeDao.findByCompanyContainingOrderByLastNameDesc(company);
 	}
 
 }

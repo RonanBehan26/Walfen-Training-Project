@@ -1,6 +1,7 @@
 package com.walfen.training.api.daos;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -38,7 +39,7 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 	
 	List<Employee> findAllByCompanyOrCompany(String company, String company2);
 
-	List<Employee> findAllByFirstNameStartsWithAndCompany(String firstName, String company);
+	List<Employee> findAllByFirstNameStartsWithAndCompany(String firstName, String company); //////////////
 
 	List<Employee> findAllByLastName(String lastName);
 	
@@ -72,19 +73,19 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 
 	boolean existsByCompanyOrCompany(String company, String company2);
 
-	boolean existsByCompanyAndFirstNameStartsWith(String company, String firstName);
+	boolean existsByCompanyAndFirstNameStartsWith(String company, String firstName);/////////////////
 
 	boolean existsByLastName(String lastName);
 	
 	
 	
-
 	
+//P1 - List employees filtered by company equals to the parameter and sorted by last name:
+	List<Employee> findByCompanyOrderByLastName(String company);
 
+//P2 - List employees filtered by company containing a text and sorted by last name descending:
+	List<Employee> findByCompanyContainingOrderByLastNameDesc(String company);
 	
-
-	
-
 	
 }
 
