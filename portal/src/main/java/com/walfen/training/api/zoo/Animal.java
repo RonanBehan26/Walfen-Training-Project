@@ -1,6 +1,6 @@
 package com.walfen.training.api.zoo;
 
-public abstract class Animal extends Zoo {
+public abstract class Animal {
 	
 	private long id;
 	

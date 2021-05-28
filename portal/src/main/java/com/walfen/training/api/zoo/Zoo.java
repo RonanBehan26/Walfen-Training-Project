@@ -1,6 +1,6 @@
 package com.walfen.training.api.zoo;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public class Zoo {
 	
@@ -8,37 +8,20 @@ public class Zoo {
 	private String name;
 	private String city;
 	
-	LinkedList<Zoo> animals = new LinkedList<>();
-	
-	Zebra zebraOne = new Zebra();
-	Shark sharkOne = new Shark();
-	Shark sharkTwo = new Shark();
-	Tiger tigerOne = new Tiger();
-	Tiger tigerTwo = new Tiger();
-	
+	private List<Animal> animals;
 	
 	public Zoo() {
-		zebraOne.setName("George");
-		zebraOne.setCity("Cork");
+		Zebra zebraOne = new Zebra();
 		animals.add(zebraOne);
-		
-		sharkOne.setName("Pat");
-		sharkOne.setCity("Madrid");
+		Shark sharkOne = new Shark();
 		animals.add(sharkOne);
-		
-		sharkTwo.setName("Johnny");
-		sharkTwo.setCity("Cologne");
+		Shark sharkTwo = new Shark();
 		animals.add(sharkTwo);
-		
-		tigerOne.setName("Bill");
-		tigerOne.setCity("Paris");
+		Tiger tigerOne = new Tiger();
 		animals.add(tigerOne);
-		
-		tigerTwo.setName("Frank");
-		tigerTwo.setCity("Warsaw");
+		Tiger tigerTwo = new Tiger();
 		animals.add(tigerTwo);
 	}
-	
 	
 	public String getName() {
 		return name;
