@@ -23,6 +23,16 @@ public class Zoo {
 		animals.add(tigerTwo);
 	}
 	
+	public List<Animal> getAnimals() {
+	        return this.animals;
+	    }
+	
+	public int getAnimalsSize() {
+        return this.animals.size();
+    }
+	
+	
+	
 	public String getName() {
 		return name;
 	}
