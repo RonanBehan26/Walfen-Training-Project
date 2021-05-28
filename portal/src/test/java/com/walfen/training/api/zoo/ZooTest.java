@@ -1,5 +1,6 @@
 package com.walfen.training.api.zoo;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,19 +13,23 @@ public class ZooTest {
 	//(e.g. name, city, number of animals)
 	
 	
-	public class MyClass {
-
-	    public void main(String[] args) {
+	@Test
+	public void testZoo(){
 	    	Zoo zoo = new Zoo();
 	    	
-	    	//zoo.getAnimals();
+	    	
+	    	
+	    	zoo.getAnimals();
+	    	
 	    	System.out.println(zoo.getAnimalsSize());
 	    	System.out.println(zoo.getName());
 	    	System.out.println(zoo.getCity());
 	    	
 	    }
-	    	    
-
-	    }
+	    
+	}
 	
-}
+	
+	
+	
+

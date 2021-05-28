@@ -1,5 +1,6 @@
 package com.walfen.training.api.zoo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
@@ -8,7 +9,9 @@ public class Zoo {
 	private String name;
 	private String city;
 	
-	private List<Animal> animals;
+	private List<Animal> animals = new ArrayList<>();
+	
+	
 	
 	public Zoo() {
 		Zebra zebraOne = new Zebra();
