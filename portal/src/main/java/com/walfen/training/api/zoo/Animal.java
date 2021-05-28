@@ -1,13 +1,11 @@
 package com.walfen.training.api.zoo;
 
-public abstract class Animal {
+public abstract class Animal extends Zoo {
 	
 	private long id;
 	
 	public abstract String getType(); 
 	
-	
-
 	public long getId() {
 		return id;
 	}
