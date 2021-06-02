@@ -1,5 +1,7 @@
 package com.walfen.training.api.football;
 
+import java.time.LocalDate;
+
 public abstract class Person {
 	
 	private String firstName;
@@ -7,7 +9,6 @@ public abstract class Person {
 	private int birthDate;
 	
 	public Person(String firstName, String lastName, int birthDate) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
@@ -37,8 +38,4 @@ public abstract class Person {
 		this.birthDate = birthDate;
 	}
 	
-	
-	
-	
-
 }

@@ -1,21 +1,24 @@
 package com.walfen.training.api.football;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Club {
 	
 	private String name;
 	private int year;
-	private String president;
-	private String coach;
-	private int players; //number of players
+	private President president;
+	private Coach coach; 
+	List<Player> players;
 	
-	public Club(String name, int year, String president, String coach, int players) {
+	public Club(String name, int year, President president, Coach coach, List<Player> players) {
 		this.name = name;
 		this.year = year;
 		this.president = president;
 		this.coach = coach;
-		this.players = players;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -32,27 +35,27 @@ public class Club {
 		this.year = year;
 	}
 
-	public String getPresident() {
+	public President getPresident() {
 		return president;
 	}
-
-	public void setPresident(String president) {
+		
+	public void setPresident(President president) {
 		this.president = president;
 	}
 
-	public String getCoach() {
+	public Coach getCoach() {
 		return coach;
 	}
 
-	public void setCoach(String coach) {
+	public void setCoach(Coach coach) {
 		this.coach = coach;
 	}
 
-	public int getPlayers() {
+	public List<Player> getPlayers() {
 		return players;
 	}
 
-	public void setPlayers(int players) {
+	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
 	

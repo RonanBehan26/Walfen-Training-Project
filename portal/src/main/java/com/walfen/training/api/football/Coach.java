@@ -1,14 +1,15 @@
 package com.walfen.training.api.football;
 
+import java.time.LocalDate;
+
 public class Coach extends Person{
 	
 	private int startingDate;
-	private String previousClub;
+	private Club previousClub;
 	
-	public Coach(String firstName, String lastName, int birthDate, int startingDate, String previousClub) {
+	public Coach(String firstName, String lastName, int birthDate, int startingDate) {
 		super(firstName, lastName, birthDate);
 		this.startingDate = startingDate;
-		this.previousClub = previousClub;
 	}
 
 	public int getStartingDate() {
@@ -19,16 +20,12 @@ public class Coach extends Person{
 		this.startingDate = startingDate;
 	}
 
-	public String getPreviousClub() {
+	public Club getPreviousClub() {
 		return previousClub;
 	}
 
-	public void setPreviousClub(String previousClub) {
+	public void setPreviousClub(Club previousClub) {
 		this.previousClub = previousClub;
 	}
-	
-	
-	
-	
 
 }

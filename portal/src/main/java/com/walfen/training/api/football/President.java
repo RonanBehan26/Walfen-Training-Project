@@ -1,5 +1,7 @@
 package com.walfen.training.api.football;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class President extends Person {
@@ -7,12 +9,13 @@ public class President extends Person {
 	List<String> duties;
 	private int startingDate;
 	
-	public President(String firstName, String lastName, int birthDate, List<String> duties, int startingDate) {
+	public President(String firstName, String lastName, int birthDate, List<String> duties) {
 		super(firstName, lastName, birthDate);
-		this.duties = duties;
+		this.duties = new ArrayList();
 		this.startingDate = startingDate;
-		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public List<String> getDuties() {
 		return duties;
@@ -29,8 +32,5 @@ public class President extends Person {
 	public void setStartingDate(int startingDate) {
 		this.startingDate = startingDate;
 	}
-	
-	
-	
-	
+
 }
