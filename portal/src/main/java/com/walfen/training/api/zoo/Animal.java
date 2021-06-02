@@ -6,8 +6,6 @@ public abstract class Animal {
 	
 	public abstract String getType(); 
 	
-	
-
 	public long getId() {
 		return id;
 	}

@@ -2,7 +2,7 @@ package com.walfen.training.api.zoo;
 
 public class Shark extends Animal implements Carnivore {
 	
-	public String ocean;
+	public String ocean;	
 	
 	@Override
 	public String getType() {

@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.walfen.training.api.entities.Address;
+import com.walfen.training.api.zoo.Zoo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -32,6 +33,20 @@ public class AddressIntegrationTest {
 
 	@Resource
 	private ObjectMapper objectMapper;
+	
+	@Test
+	public void testZoo(){
+	    	Zoo zoo = new Zoo();
+	    	zoo.setName("Chicago Zoo");
+	    	zoo.setCity("Chicago");
+	    	
+	    	zoo.getAnimals();
+	    	
+	    	System.out.println("This is how many animals at the zoo: " + zoo.getAnimalsSize());
+	    	System.out.println(zoo.getName());
+	    	System.out.println(zoo.getCity());
+	    	
+	    }
 	
 	@Test
 	@Sql(scripts = { "classpath:db/sql/all.sql" })
