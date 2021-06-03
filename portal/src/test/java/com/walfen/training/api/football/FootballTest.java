@@ -21,7 +21,6 @@ public class FootballTest {
 		duties.add("Ads");
 		duties.add("Raffle");
 		
-		
 		President presidentTeam1 = new President("Pat", "Spillane", LocalDate.parse("1956-11-14"), LocalDate.parse("1975-11-14"), duties);
 			
 		Coach coachTeam1 = new Coach("John", "Burns", LocalDate.parse("1954-12-19"), LocalDate.parse("1983-01-10"));
@@ -46,7 +45,7 @@ public class FootballTest {
 	    	
 	    	//System.out.println("President's Name: " + presidentTeam1.getFirstName() + " " + presidentTeam1.getLastName());
 	    	
-	    	System.out.println("Coach's Name: " + coachTeam1.getFirstName() + " " + coachTeam1.getLastName());
+	    	System.out.println("Coach's Name: " + club.getCoach().getFirstName() + " " + club.getCoach().getLastName());
 	    	
 	    	System.out.println("Number of Players: " + club.getPlayers().size());
 	    	

@@ -9,17 +9,17 @@ public class President extends Person {
 	private LocalDate startingDate;
 	private List<String> duties;
 	
-	public President() {
-		super();//calls the superclass constructor
+	public President(String firstName, String lastName, LocalDate birthDate) {
+		super(firstName, lastName, birthDate);//calls the superclass constructor
 		this.duties = new ArrayList<>();
 	}
 	
 	public President(String firstName, String lastName, LocalDate birthDate, LocalDate startingDate, List<String> duties) {
-		this();//calls the constructor above	
+		this(firstName, lastName, startingDate);//calls the constructor above
 		this.startingDate = startingDate;
 		this.duties = duties;
 	}
-	
+
 	public List<String> getDuties() {
 		return duties;
 	}
