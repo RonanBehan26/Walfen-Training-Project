@@ -6,13 +6,18 @@ import java.util.List;
 
 public class President extends Person {
 	
-	List<String> duties;
 	private LocalDate startingDate;
+	private List<String> duties;
 	
-	public President(String firstName, String lastName, LocalDate birthDate, List<String> duties, LocalDate startingDate) {
-		super(firstName, lastName, birthDate);
-		this.duties = new ArrayList();
+	public President() {
+		super();//calls the superclass constructor
+		this.duties = new ArrayList<>();
+	}
+	
+	public President(String firstName, String lastName, LocalDate birthDate, LocalDate startingDate, List<String> duties) {
+		this();//calls the constructor above	
 		this.startingDate = startingDate;
+		this.duties = duties;
 	}
 	
 	public List<String> getDuties() {
@@ -32,30 +37,3 @@ public class President extends Person {
 	}
 
 }
-
-/*
- * List<String> duties;
-	private int startingDate;
-	
-	public President(String firstName, String lastName, int birthDate, List<String> duties, int startingDate) {
-		super(firstName, lastName, birthDate);
-		this.duties = new ArrayList();
-		this.startingDate = startingDate;
-	}
-	
-	public List<String> getDuties() {
-		return duties;
-	}
-
-	public void setDuties(List<String> duties) {
-		this.duties = duties;
-	}
-
-	public int getStartingDate() {
-		return startingDate;
-	}
-
-	public void setStartingDate(int startingDate) {
-		this.startingDate = startingDate;
-	}
-	*/
