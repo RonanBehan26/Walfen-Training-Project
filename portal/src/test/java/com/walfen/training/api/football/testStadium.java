@@ -96,6 +96,12 @@ public class testStadium {
 		playersList.add(playerTwo);
 		playersList.add(playerThree);
 
+		// Creating a list of player names
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add(playerOne.getFirstName() + " " + playerOne.getLastName());
+		playerNames.add(playerTwo.getFirstName() + " " + playerTwo.getLastName());
+		playerNames.add(playerThree.getFirstName() + " " + playerThree.getLastName());
+
 		List<String> dutiesListowelPresident = new ArrayList<String>();
 		dutiesListowelPresident.add("Finances");
 		dutiesListowelPresident.add("Ads");
@@ -111,7 +117,7 @@ public class testStadium {
 
 		// Club details
 		assertEquals("Listowel", clubListowel.getName());
-		assertEquals(LocalDate.parse("1924-11-14"), clubListowel.getYear());
+		assertEquals(LocalDate.parse("1967-11-14"), clubListowel.getYear());
 		assertEquals(presidentListowel, clubListowel.getPresident());
 		assertEquals(coachListowel, clubListowel.getCoach());
 		assertEquals(playersList, clubListowel.getPlayers());
@@ -120,9 +126,14 @@ public class testStadium {
 		assertEquals("Jake Tubert", (clubListowel.getPlayers().get(0).getFirstName() + " "
 				+ clubListowel.getPlayers().get(0).getLastName()));
 		assertEquals("Harold MacMillan", (clubListowel.getPlayers().get(1).getFirstName() + " "
-				+ clubListowel.getPlayers().get(0).getLastName()));
+				+ clubListowel.getPlayers().get(1).getLastName()));
 		assertEquals("Peter Williams", (clubListowel.getPlayers().get(2).getFirstName() + " "
-				+ clubListowel.getPlayers().get(0).getLastName()));
+				+ clubListowel.getPlayers().get(2).getLastName()));
+
+		// Players names in the list playerNames
+		assertEquals("Jake Tubert", playerNames.get(0));
+		assertEquals("Harold MacMillan", playerNames.get(1));
+		assertEquals("Peter Williams", playerNames.get(2));
 
 	}
 }
