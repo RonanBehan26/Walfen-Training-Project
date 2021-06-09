@@ -1,6 +1,7 @@
 package com.walfen.training.api.football;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Stadium {
@@ -11,7 +12,13 @@ public class Stadium {
 	private List<Seat> seats;
 	private Club club;
 	
+	public Stadium() {
+		super();
+		this.seats = new ArrayList<>();
+	}
+	
 	public Stadium(String name, LocalDate year, Address address, List<Seat> seats, Club club) {
+		this();
 		this.name = name;
 		this.year = year;
 		this.address = address;
