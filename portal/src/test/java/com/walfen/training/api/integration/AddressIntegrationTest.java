@@ -40,7 +40,7 @@ public class AddressIntegrationTest {
 	    	zoo.setName("Chicago Zoo");
 	    	zoo.setCity("Chicago");
 	    	
-	    	zoo.getAnimals();
+	    	System.out.println(zoo.getAnimals());
 	    	
 	    	System.out.println("This is how many animals at the zoo: " + zoo.getAnimalsSize());
 	    	System.out.println(zoo.getName());
