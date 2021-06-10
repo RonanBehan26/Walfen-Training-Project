@@ -111,15 +111,22 @@ public class testStadium {
 		});
 
 		// create a list with lambda of the players with more than 5 goals
-		List<String> playerFiveGoals = new ArrayList<>();
-		playersList.forEach(e -> {
-			if (e.getGoals() > 4) {
-				playerFiveGoals.add(e.getFirstName() + " " + e.getLastName());
-			}
-		});
-		playerFiveGoals.forEach((s) -> System.out.println(s));
-		assertEquals("Harold MacMillan", (playerFiveGoals.get(0)));
-		assertEquals("Peter Williams", (playerFiveGoals.get(1)));
+
+		List<Player> PlayersWithMoreThanFiveGoals = playersList.stream().filter(c -> c.getGoals() > 4)
+				.collect(Collectors.toList());
+		PlayersWithMoreThanFiveGoals.forEach((s) -> System.out.println(s.getFirstName() + " " + s.getLastName()));
+
+		assertEquals("Harold MacMillan", (PlayersWithMoreThanFiveGoals.get(0).getFirstName() + " "
+				+ PlayersWithMoreThanFiveGoals.get(0).getLastName()));
+		assertEquals(LocalDate.parse("1997-11-14"), PlayersWithMoreThanFiveGoals.get(0).getBirthDate());
+		assertEquals("Center Back", PlayersWithMoreThanFiveGoals.get(0).getPosition());
+		assertEquals(7, PlayersWithMoreThanFiveGoals.get(0).getGoals());
+
+		assertEquals("Peter Williams", (PlayersWithMoreThanFiveGoals.get(1).getFirstName() + " "
+				+ PlayersWithMoreThanFiveGoals.get(1).getLastName()));
+		assertEquals(LocalDate.parse("1996-12-12"), PlayersWithMoreThanFiveGoals.get(1).getBirthDate());
+		assertEquals("Mid-Field", PlayersWithMoreThanFiveGoals.get(1).getPosition());
+		assertEquals(16, PlayersWithMoreThanFiveGoals.get(1).getGoals());
 
 		// sort the names alphabetically, desc
 		playersList.sort((Player s1, Player s2) -> s2.getFirstName().compareTo(s1.getFirstName()));
