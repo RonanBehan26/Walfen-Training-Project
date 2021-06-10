@@ -113,7 +113,10 @@ public class testStadium {
 		// sort the names alphabetically, desc
 		playersList.sort((Player s1, Player s2) -> s2.getFirstName().compareTo(s1.getFirstName()));
 		playersList.forEach((s) -> System.out.println(s.getFirstName()));
-		
+
+		assertEquals("Peter", (playersList.get(0).getFirstName()));
+		assertEquals("Jake", (playersList.get(1).getFirstName()));
+		assertEquals("Harold", (playersList.get(2).getFirstName()));
 
 		List<String> dutiesListowelPresident = new ArrayList<String>();
 		dutiesListowelPresident.add("Finances");
