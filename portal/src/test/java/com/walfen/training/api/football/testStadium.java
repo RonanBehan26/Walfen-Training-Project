@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -97,10 +98,16 @@ public class testStadium {
 		playersList.add(playerThree);
 
 		// Creating a list of player names
-		List<String> playerNames = new ArrayList<String>();
-		playerNames.add(playerOne.getFirstName() + " " + playerOne.getLastName());
-		playerNames.add(playerTwo.getFirstName() + " " + playerTwo.getLastName());
-		playerNames.add(playerThree.getFirstName() + " " + playerThree.getLastName());
+		List<String> playerNames = new ArrayList<>();
+		// for loop
+//		for(int i=0; i<= playersList.size() - 1; i++) {
+//		playerNames.add(playersList.get(i).getFirstName() + " " + playersList.get(i).getLastName());
+//		}
+
+		// lambda
+		playersList.forEach((e) -> {
+			playerNames.add((e).getFirstName() + " " + (e).getLastName());
+		});
 
 		List<String> dutiesListowelPresident = new ArrayList<String>();
 		dutiesListowelPresident.add("Finances");
