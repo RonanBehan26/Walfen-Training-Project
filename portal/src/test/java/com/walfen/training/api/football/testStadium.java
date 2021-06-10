@@ -109,22 +109,21 @@ public class testStadium {
 		playersList.forEach(e -> {
 			playerNames.add(e.getFirstName() + " " + e.getLastName());
 		});
-		
-		//create a list with lambda of the players with more than 5 goals
+
+		// create a list with lambda of the players with more than 5 goals
 		List<String> playerFiveGoals = new ArrayList<>();
 		playersList.forEach(e -> {
-			if(e.getGoals() > 4) {
-			playerFiveGoals.add(e.getFirstName() + " " + e.getLastName());
+			if (e.getGoals() > 4) {
+				playerFiveGoals.add(e.getFirstName() + " " + e.getLastName());
 			}
 		});
 		playerFiveGoals.forEach((s) -> System.out.println(s));
-		assertEquals("Harold MacMillan", (playerFiveGoals.get(0)));		
+		assertEquals("Harold MacMillan", (playerFiveGoals.get(0)));
 		assertEquals("Peter Williams", (playerFiveGoals.get(1)));
-		
 
 		// sort the names alphabetically, desc
 		playersList.sort((Player s1, Player s2) -> s2.getFirstName().compareTo(s1.getFirstName()));
-		//playersList.forEach((s) -> System.out.println(s.getFirstName()));
+		// playersList.forEach((s) -> System.out.println(s.getFirstName()));
 
 		assertEquals("Peter", (playersList.get(0).getFirstName()));
 		assertEquals("Jake", (playersList.get(1).getFirstName()));
