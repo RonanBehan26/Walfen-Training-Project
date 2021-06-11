@@ -30,7 +30,7 @@ public class ZooTest {
 		Visitor visitor2 = new Visitor("Jack", "Brinog", ticketJackBrinog);
 		Visitor visitor3 = new Visitor("Mike", "Thomson", ticketMikeThomson);
 
-		List<Visitor> visitors = new ArrayList<>();
+		List<Visitor> visitors = new ArrayList<Visitor>();
 		visitors.add(visitor1);
 		visitors.add(visitor2);
 		visitors.add(visitor3);
