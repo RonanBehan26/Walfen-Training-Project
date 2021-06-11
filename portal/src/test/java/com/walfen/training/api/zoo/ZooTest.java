@@ -22,11 +22,6 @@ public class ZooTest {
 	@Test
 	public void testVisitors() {
 
-		List<Visitor> visitors = new ArrayList<>();
-
-//Visitor(String firstName, String lastName, int age, Ticket ticket
-//LocalDateTime visitTime, int numOfTickets, double price
-
 		Ticket ticketTomMartin = new Ticket(LocalDateTime.parse("2021-04-08T12:30:32"), 2, 27.00);
 		Ticket ticketJackBrinog = new Ticket(LocalDateTime.parse("2020-05-09T10:30:12"), 3, 35.00);
 		Ticket ticketMikeThomson = new Ticket(LocalDateTime.parse("2021-01-08T14:30:14"), 4, 42);
@@ -35,6 +30,7 @@ public class ZooTest {
 		Visitor visitor2 = new Visitor("Jack", "Brinog", ticketJackBrinog);
 		Visitor visitor3 = new Visitor("Mike", "Thomson", ticketMikeThomson);
 
+		List<Visitor> visitors = new ArrayList<>();
 		visitors.add(visitor1);
 		visitors.add(visitor2);
 		visitors.add(visitor3);
