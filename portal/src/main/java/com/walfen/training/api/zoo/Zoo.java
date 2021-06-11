@@ -8,23 +8,32 @@ public class Zoo {
 	
 	private String name;
 	private String city;
-	
 	private List<Animal> animals = new ArrayList<>();
 	
-	
-	
 	public Zoo() {
-		Zebra zebraOne = new Zebra();
-		animals.add(zebraOne);
-		Shark sharkOne = new Shark();
-		animals.add(sharkOne);
-		Shark sharkTwo = new Shark();
-		animals.add(sharkTwo);
-		Tiger tigerOne = new Tiger();
-		animals.add(tigerOne);
-		Tiger tigerTwo = new Tiger();
-		animals.add(tigerTwo);
+		super();
+		this.animals = new ArrayList<>();
 	}
+
+	public Zoo(String name, String city, List<Animal> animals) {
+		this();
+		this.name = name;
+		this.city = city;
+		this.animals = animals;
+	}
+
+//	public Zoo() {
+//		Zebra zebraOne = new Zebra();
+//		animals.add(zebraOne);
+//		Shark sharkOne = new Shark();
+//		animals.add(sharkOne);
+//		Shark sharkTwo = new Shark();
+//		animals.add(sharkTwo);
+//		Tiger tigerOne = new Tiger();
+//		animals.add(tigerOne);
+//		Tiger tigerTwo = new Tiger();
+//		animals.add(tigerTwo);
+//	}
 	
 	public List<Animal> getAnimals() {
 	        return this.animals;

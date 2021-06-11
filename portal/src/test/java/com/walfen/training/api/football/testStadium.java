@@ -112,7 +112,7 @@ public class testStadium {
 
 		// create a list with lambda of the players with more than 5 goals
 
-		List<Player> PlayersWithMoreThanFiveGoals = playersList.stream().filter(c -> c.getGoals() > 4)
+		List<Player> PlayersWithMoreThanFiveGoals = playersList.stream().filter(c -> c.getGoals() > 5)
 				.collect(Collectors.toList());
 		PlayersWithMoreThanFiveGoals.forEach((s) -> System.out.println(s.getFirstName() + " " + s.getLastName()));
 
