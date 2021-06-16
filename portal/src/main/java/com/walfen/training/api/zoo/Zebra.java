@@ -4,6 +4,8 @@ public class Zebra extends Animal{
 	
 	private String country;
 
+	public Zebra(String country) {
+	}
 
 	@Override
 	public String getType() {
