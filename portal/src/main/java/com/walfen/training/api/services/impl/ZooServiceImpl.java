@@ -108,9 +108,8 @@ public class ZooServiceImpl implements ZooService {
 	}
 
 	@Override
-	public Zoo get(List<Animal> animals) {
-		LOGGER.info("get animals - list: {}", animals);
-		
+	public List<Animal> listAnimals(Long id) {
+
 		List<Zoo> allZoos = new ArrayList<>();
 		
 		List<Animal> animalsListOne = new ArrayList<>();
@@ -146,9 +145,7 @@ public class ZooServiceImpl implements ZooService {
 		allZoos.add(zooTwo);
 		allZoos.add(zooThree);
 		
-		
-		//he wants the animals of a zoo
-		return zooOne;
+		return animalsListOne;
 	}
 	
 	

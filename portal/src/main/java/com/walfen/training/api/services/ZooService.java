@@ -11,6 +11,6 @@ public interface ZooService {
 	
 	Zoo get(Long id);
 
-	Zoo get(List<Animal> animals);
+	List<Animal> listAnimals(Long id);
 
 }
