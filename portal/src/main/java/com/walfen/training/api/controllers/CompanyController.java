@@ -39,8 +39,6 @@ public class CompanyController {
 		return companies.stream().map( a -> mapper.map(a, CompanyDto.class)).collect(Collectors.toList());
 	}	
 	
-	
-	
 	@RequestMapping(path = "/name-sorted", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<CompanyDto> listByNameSorted() {
 		
@@ -48,9 +46,6 @@ public class CompanyController {
 
 		return companies.stream().map( a -> mapper.map(a, CompanyDto.class)).collect(Collectors.toList());
 	}
-	
-	
-	
 		
 	@RequestMapping(path = "/city-sorted-desc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<CompanyDto> listByCitySorted() {

@@ -24,3 +24,10 @@ insert into manager (id, first_name, last_name, company, birthday) values (1, 'P
 insert into manager (id, first_name, last_name, company, birthday) values (2, 'Joe', 'Keogh', 'Microsoft', '1995-12-15');
 insert into manager (id, first_name, last_name, company, birthday) values (3, 'Tom', 'Rourke', 'Tesla', '1986-08-11');
 
+/*
+insert into zoo (id, name, city, animals) values (1, 'Chicago Zoo', 'Chicago', 'tiger');
+insert into zoo (id, name, city, animals) values (2, 'London Zoo', 'London', 'shark');
+insert into zoo (id, name, city, animals) values (3, 'Madrid Zoo', 'Madrid', 'zebra');
+*/
+
+
