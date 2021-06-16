@@ -2,7 +2,6 @@ package com.walfen.training.api.dtos;
 
 public class AddressDto {
 
-	
 	private long id;
 	private String street;
 	private String city;
@@ -49,5 +48,4 @@ public class AddressDto {
 		this.dto = dto;
 	}	
 
-	
 }

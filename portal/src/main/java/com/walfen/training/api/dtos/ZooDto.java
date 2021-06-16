@@ -1,25 +1,15 @@
-package com.walfen.training.api.zoo;
+package com.walfen.training.api.dtos;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zoo {
+import com.walfen.training.api.zoo.Animal;
 
+public class ZooDto {
+	private long id;
 	private String name;
 	private String city;
-	private List<Animal> animals = new ArrayList<>();
-
-	public Zoo() {
-		super();
-		this.animals = new ArrayList<>();
-	}
-
-	public Zoo(String name, String city, List<Animal> animals) {
-		this();
-		this.name = name;
-		this.city = city;
-		this.animals = animals;
-	}
+	private List<Animal> animals;
 
 	public List<Animal> getAnimals() {
 		return this.animals;
@@ -31,6 +21,18 @@ public class Zoo {
 
 	public String getName() {
 		return name;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
 	}
 
 	public void setName(String name) {
