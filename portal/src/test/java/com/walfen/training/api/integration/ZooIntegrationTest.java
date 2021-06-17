@@ -74,9 +74,7 @@ public class ZooIntegrationTest {
 				.andExpect(jsonPath("$.id", is(1)))
 				.andExpect(jsonPath("$.name", is("Chicago Zoo")))
 				.andExpect(jsonPath("$.city", is("Chicago")))
-				.andExpect(jsonPath("$.animals[0].name", is("Tony")))
-				;
-
+				.andExpect(jsonPath("$.animals[0].name", is("Tony")));
 	}
 		
 		@Test
@@ -97,5 +95,4 @@ public class ZooIntegrationTest {
 				.andExpect(jsonPath("$.animals[2].type", is("Tiger")));
 			
 		}
-
 }

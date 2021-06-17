@@ -54,7 +54,7 @@ public class ZooController {
 	//getAnimals is the header 
 	public List<AnimalDto> getAnimals(@PathVariable Long id) {
 
-		List<Animal> animals = zooService.listAnimals(id); // filter by zoo here
+		List<AnimalDto> animals = zooService.listAnimals(id); 
 
 		return animals.stream().map(a -> mapper.map(a, AnimalDto.class)).collect(Collectors.toList());
 	}
