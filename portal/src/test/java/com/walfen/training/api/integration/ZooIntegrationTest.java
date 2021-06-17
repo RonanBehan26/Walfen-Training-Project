@@ -85,14 +85,14 @@ public class ZooIntegrationTest {
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$", hasSize(3)))
 				.andExpect(jsonPath("$[0].id", is(0)))
-				.andExpect(jsonPath("$.[0].name", is("Tony")))
-				.andExpect(jsonPath("$.[0].type", is("Tiger")))
-				.andExpect(jsonPath("$.[1].id", is(0)))
-				.andExpect(jsonPath("$.[1].name", is("John")))
-				.andExpect(jsonPath("$.[1].type", is("Tiger")))
-				.andExpect(jsonPath("$.[0].id", is(0)))
-				.andExpect(jsonPath("$.[2].name", is("Pat")))
-				.andExpect(jsonPath("$.[2].type", is("Tiger")))																								   
+				.andExpect(jsonPath("$[0].name", is("Tony")))
+				.andExpect(jsonPath("$[0].type", is("Tiger")))
+				.andExpect(jsonPath("$[1].id", is(0)))
+				.andExpect(jsonPath("$[1].name", is("John")))
+				.andExpect(jsonPath("$[1].type", is("Tiger")))
+				.andExpect(jsonPath("$[0].id", is(0)))
+				.andExpect(jsonPath("$[2].name", is("Pat")))
+				.andExpect(jsonPath("$[2].type", is("Tiger")))																								   
 				.andDo(MockMvcResultHandlers.print());
 			
 		}

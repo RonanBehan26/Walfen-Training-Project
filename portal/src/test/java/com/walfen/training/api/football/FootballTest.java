@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.walfen.training.api.entities.Club;
+
 @AutoConfigureMockMvc
 public class FootballTest {
 	
@@ -39,7 +41,7 @@ public class FootballTest {
 		players.add(playerT1P2);
 		players.add(playerT1P3);
 			
-		Club club = new Club("Johnstown", LocalDate.parse("1924-11-14") , presidentTeam1, coachTeam1, players);
+		Club club = new Club(1, "Johnstown", LocalDate.parse("1924-11-14") , presidentTeam1, coachTeam1, players);
 			    	
 	    	System.out.println("Club Name: " + club.getName());
 	    	System.out.println("Year of Creation: " + club.getYear());

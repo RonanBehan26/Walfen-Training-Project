@@ -1,29 +1,42 @@
-package com.walfen.training.api.football;
+package com.walfen.training.api.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.walfen.training.api.football.Address;
+import com.walfen.training.api.football.Seat;
+
 public class Stadium {
-	
+
+	private int id;
 	private String name;
 	private LocalDate year;
 	private Address address;
 	private List<Seat> seats;
 	private Club club;
-	
+
 	public Stadium() {
 		super();
 		this.seats = new ArrayList<>();
 	}
-	
-	public Stadium(String name, LocalDate year, Address address, List<Seat> seats, Club club) {
+
+	public Stadium(int id, String name, LocalDate year, Address address, List<Seat> seats, Club club) {
 		this();
+		this.id = id;
 		this.name = name;
 		this.year = year;
 		this.address = address;
 		this.seats = seats;
 		this.club = club;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -65,6 +78,5 @@ public class Stadium {
 	public void setClub(Club club) {
 		this.club = club;
 	}
-	
 
 }

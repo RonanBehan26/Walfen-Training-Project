@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
+import com.walfen.training.api.entities.Club;
+import com.walfen.training.api.entities.Stadium;
+
 @AutoConfigureMockMvc
 public class testStadium {
 
@@ -49,10 +52,10 @@ public class testStadium {
 		playersTest.add(playerT1P2Test);
 		playersTest.add(playerT1P3Test);
 
-		Club clubTest = new Club("JohnsVille", LocalDate.parse("1924-11-14"), presidentTeamTest, coachTeamTest,
+		Club clubTest = new Club(1, "JohnsVille", LocalDate.parse("1924-11-14"), presidentTeamTest, coachTeamTest,
 				playersTest);
 
-		Stadium stadium = new Stadium("Stade de France", LocalDate.parse("1889-11-14"), addressOne, seats, clubTest);
+		Stadium stadium = new Stadium(1, "Stade de France", LocalDate.parse("1889-11-14"), addressOne, seats, clubTest);
 
 		assertEquals("Stade de France", stadium.getName());
 		assertEquals(LocalDate.parse("1889-11-14"), stadium.getYear());
@@ -146,7 +149,7 @@ public class testStadium {
 
 		Coach coachListowel = new Coach("Jimmy", "McGee", LocalDate.parse("1972-12-19"), LocalDate.parse("1995-01-10"));
 
-		Club clubListowel = new Club("Listowel", LocalDate.parse("1967-11-14"), presidentListowel, coachListowel,
+		Club clubListowel = new Club(1, "Listowel", LocalDate.parse("1967-11-14"), presidentListowel, coachListowel,
 				playersList);
 
 		// Club details
