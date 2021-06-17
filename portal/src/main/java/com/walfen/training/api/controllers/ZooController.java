@@ -38,23 +38,21 @@ public class ZooController {
 
 		return zoos.stream().map(a -> mapper.map(a, ZooDto.class)).collect(Collectors.toList());
 	}
-	
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ZooDto get(@PathVariable Long id) {
 		Zoo zoo = zooService.get(id);
 
 		return mapper.map(zoo, ZooDto.class);
 	}
-	
-	
-	//the endpoint here could be contentions
-	@RequestMapping(value = "/{id}/animals", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)//id of zoo
-	//the request mapping var needs to be the same as in @PathVariable
-	//getAnimals is the header 
+
+	@RequestMapping(value = "/{id}/animals", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+
+	// the request mapping var needs to be the same as in @PathVariable
+	// getAnimals is the header
 	public List<AnimalDto> getAnimals(@PathVariable Long id) {
 
-		List<AnimalDto> animals = zooService.listAnimals(id); 
+		List<AnimalDto> animals = zooService.listAnimals(id);
 
 		return animals.stream().map(a -> mapper.map(a, AnimalDto.class)).collect(Collectors.toList());
 	}

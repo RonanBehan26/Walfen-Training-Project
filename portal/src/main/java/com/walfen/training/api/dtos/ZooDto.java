@@ -10,7 +10,7 @@ public class ZooDto {
 	private String name;
 	private String city;
 	private List<AnimalDto> animals;
-	
+
 	public ZooDto() {
 		super();
 		this.animals = new ArrayList<>();
@@ -22,7 +22,7 @@ public class ZooDto {
 		this.name = name;
 		this.city = city;
 		this.animals = animals;
-		
+
 	}
 
 	public List<AnimalDto> getAnimals() {

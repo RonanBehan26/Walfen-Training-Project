@@ -1,7 +1,7 @@
 package com.walfen.training.api.dtos;
 
 public class ZebraDto extends AnimalDto {
-	
+
 	private String country;
 
 	public ZebraDto(String country) {
@@ -11,7 +11,7 @@ public class ZebraDto extends AnimalDto {
 	public String getType() {
 		return "Zebra";
 	}
-	
+
 	public String getCountry() {
 		return country;
 	}

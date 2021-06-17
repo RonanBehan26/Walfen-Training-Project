@@ -79,20 +79,21 @@ public class ZooIntegrationTest {
 		
 		@Test
 		public void testGetAnimals() throws Exception {
-			mvc.perform(get("/zoos/{id}/animals", 1) //this is the api endpoint to be called
+			mvc.perform(get("/zoos/{id}/animals", 0) //this is the api endpoint to be called
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$.id", is(1)))
-				.andExpect(jsonPath("$.name", is("Chicago Zoo")))
-				.andExpect(jsonPath("$.city", is("Chicago")))
-				.andExpect(jsonPath("$.animals", hasSize(3)))
-				.andExpect(jsonPath("$.animals[0].name", is("Tony")))
-				.andExpect(jsonPath("$.animals[0].type", is("Tiger")))
-				.andExpect(jsonPath("$.animals[1].name", is("John")))
-				.andExpect(jsonPath("$.animals[1].type", is("Tiger")))
-				.andExpect(jsonPath("$.animals[2].name", is("Pat")))
-				.andExpect(jsonPath("$.animals[2].type", is("Tiger")));
+				.andExpect(jsonPath("$", hasSize(3)))
+				.andExpect(jsonPath("$[0].id", is(0)))
+				.andExpect(jsonPath("$.[0].name", is("Tony")))
+				.andExpect(jsonPath("$.[0].type", is("Tiger")))
+				.andExpect(jsonPath("$.[1].id", is(0)))
+				.andExpect(jsonPath("$.[1].name", is("John")))
+				.andExpect(jsonPath("$.[1].type", is("Tiger")))
+				.andExpect(jsonPath("$.[0].id", is(0)))
+				.andExpect(jsonPath("$.[2].name", is("Pat")))
+				.andExpect(jsonPath("$.[2].type", is("Tiger")))																								   
+				.andDo(MockMvcResultHandlers.print());
 			
 		}
 }
