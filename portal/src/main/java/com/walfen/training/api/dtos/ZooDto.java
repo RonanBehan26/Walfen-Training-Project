@@ -9,9 +9,23 @@ public class ZooDto {
 	private long id;
 	private String name;
 	private String city;
-	private List<Animal> animals;
+	private List<AnimalDto> animals;
 
-	public List<Animal> getAnimals() {
+	public ZooDto() {
+		super();
+		this.animals = new ArrayList<>();
+	}
+
+	public ZooDto(long id, String name, String city, List<AnimalDto> animals) {
+		this();
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.animals = animals;
+
+	}
+
+	public List<AnimalDto> getAnimals() {
 		return this.animals;
 	}
 
@@ -31,7 +45,7 @@ public class ZooDto {
 		this.id = id;
 	}
 
-	public void setAnimals(List<Animal> animals) {
+	public void setAnimals(List<AnimalDto> animals) {
 		this.animals = animals;
 	}
 

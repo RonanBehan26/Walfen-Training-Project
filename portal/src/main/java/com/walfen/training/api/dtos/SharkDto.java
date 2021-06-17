@@ -1,6 +1,6 @@
-package com.walfen.training.api.zoo;
+package com.walfen.training.api.dtos;
 
-public class Shark extends Animal implements Carnivore {
+public class SharkDto extends AnimalDto implements CarnivoreDto {
 
 	public String ocean;
 
@@ -9,7 +9,7 @@ public class Shark extends Animal implements Carnivore {
 		return "Shark";
 	}
 
-	public Shark(String ocean) {
+	public SharkDto(String ocean) {
 		super();
 		this.ocean = ocean;
 	}
