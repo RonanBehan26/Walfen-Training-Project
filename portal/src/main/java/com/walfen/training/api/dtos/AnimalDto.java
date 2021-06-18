@@ -6,9 +6,6 @@ public abstract class AnimalDto {
 
 	public abstract String getType();
 
-	public AnimalDto() {
-	}
-
 	public long getId() {
 		return id;
 	}

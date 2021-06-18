@@ -7,10 +7,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
@@ -22,13 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.walfen.training.api.entities.Club;
-import com.walfen.training.api.entities.Stadium;
-import com.walfen.training.api.football.Address;
-import com.walfen.training.api.football.Coach;
-import com.walfen.training.api.football.Player;
-import com.walfen.training.api.football.President;
-import com.walfen.training.api.football.Seat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -39,11 +28,7 @@ public class StadiumIntegrationTest {
 
 	@Resource
 	private ObjectMapper objectMapper;
-			
-	//int id, String name, LocalDate year, Address address, List<Seat> seats, Club club
-	//	Stadium stadium = new Stadium(1, "Stade de France", LocalDate.parse("1889-11-14"), addressOne, seats, clubTest);
-	//	Stadium stadiumS2 = new Stadium(2, "Stadio Olimpico", LocalDate.parse("1901-11-14"), addressTwo, seatsS2, clubTestS2);
-	
+				
 	@Test
 	public void testList() throws Exception {
 		mvc.perform(get("/stadiums") //this is the api endpoint to be called

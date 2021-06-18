@@ -4,11 +4,6 @@ public class TigerDto extends AnimalDto implements CarnivoreDto {
 
 	private String name;
 
-	public TigerDto(String name) {
-		super();
-		this.name = name;
-	}
-
 	public void run() {
 		System.out.println("running");
 	}

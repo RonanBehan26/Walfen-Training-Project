@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.walfen.training.api.dtos.AddressDto;
 import com.walfen.training.api.dtos.AnimalDto;
+import com.walfen.training.api.dtos.ClubDto;
 import com.walfen.training.api.dtos.ZooDto;
-import com.walfen.training.api.entities.Address;
+import com.walfen.training.api.entities.Club;
 import com.walfen.training.api.entities.Zoo;
+import com.walfen.training.api.services.ClubService;
 import com.walfen.training.api.services.ZooService;
 import com.walfen.training.api.zoo.Animal;
 
@@ -32,12 +33,16 @@ public class ZooController {
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<ZooDto> list() {
-
 		// what the response should be
 		List<Zoo> zoos = zooService.list();
 
 		return zoos.stream().map(a -> mapper.map(a, ZooDto.class)).collect(Collectors.toList());
 	}
+	
+
+
+	
+	
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ZooDto get(@PathVariable Long id) {
@@ -47,12 +52,8 @@ public class ZooController {
 	}
 
 	@RequestMapping(value = "/{id}/animals", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-
-	// the request mapping var needs to be the same as in @PathVariable
-	// getAnimals is the header
 	public List<AnimalDto> getAnimals(@PathVariable Long id) {
-
-		List<AnimalDto> animals = zooService.listAnimals(id);
+		List<Animal> animals = zooService.listAnimals(id);
 
 		return animals.stream().map(a -> mapper.map(a, AnimalDto.class)).collect(Collectors.toList());
 	}
