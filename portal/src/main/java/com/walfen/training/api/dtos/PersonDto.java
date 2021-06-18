@@ -8,15 +8,6 @@ public abstract class PersonDto {
 	private String lastName;
 	private LocalDate birthDate;
 
-	public PersonDto() {
-	}
-
-	public PersonDto(String firstName, String lastName, LocalDate birthDate) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.birthDate = birthDate;
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}

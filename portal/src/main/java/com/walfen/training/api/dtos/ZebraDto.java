@@ -4,9 +4,6 @@ public class ZebraDto extends AnimalDto {
 
 	private String country;
 
-	public ZebraDto(String country) {
-	}
-
 	@Override
 	public String getType() {
 		return "Zebra";

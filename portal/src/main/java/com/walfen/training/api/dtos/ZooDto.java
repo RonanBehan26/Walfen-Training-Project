@@ -11,20 +11,6 @@ public class ZooDto {
 	private String city;
 	private List<AnimalDto> animals;
 
-	public ZooDto() {
-		super();
-		this.animals = new ArrayList<>();
-	}
-
-	public ZooDto(long id, String name, String city, List<AnimalDto> animals) {
-		this();
-		this.id = id;
-		this.name = name;
-		this.city = city;
-		this.animals = animals;
-
-	}
-
 	public List<AnimalDto> getAnimals() {
 		return this.animals;
 	}

@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.walfen.training.api.dtos.AnimalDto;
 import com.walfen.training.api.dtos.ClubDto;
 import com.walfen.training.api.dtos.PlayerDto;
-import com.walfen.training.api.dtos.ZooDto;
 import com.walfen.training.api.entities.Club;
-import com.walfen.training.api.entities.Zoo;
+import com.walfen.training.api.football.Player;
 import com.walfen.training.api.services.ClubService;
 
 @RestController
@@ -50,7 +48,7 @@ public class ClubController {
 
 	public List<PlayerDto> getPlayers(@PathVariable Long id) {
 
-		List<PlayerDto> players = clubService.listPlayers(id);
+		List<Player> players = clubService.listPlayers(id);
 
 		return players.stream().map(a -> mapper.map(a, PlayerDto.class)).collect(Collectors.toList());
 	}

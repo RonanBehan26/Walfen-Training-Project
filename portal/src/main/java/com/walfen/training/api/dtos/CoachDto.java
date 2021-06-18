@@ -10,11 +10,6 @@ public class CoachDto extends PersonDto {
 	private LocalDate startingDate;
 	private ClubDto previousClub;
 
-	public CoachDto(String firstName, String lastName, LocalDate birthDate, LocalDate startingDate) {
-		super(firstName, lastName, birthDate);
-		this.startingDate = startingDate;
-	}
-
 	public LocalDate getStartingDate() {
 		return startingDate;
 	}

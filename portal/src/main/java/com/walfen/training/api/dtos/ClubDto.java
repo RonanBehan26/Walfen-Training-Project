@@ -17,21 +17,6 @@ public class ClubDto {
 	private Coach coach;
 	private List<PlayerDto> players;
 
-	public ClubDto() {
-		super();
-		this.players = new ArrayList<>();
-	}
-
-	public ClubDto(int id, String name, LocalDate year, President president, Coach coach, List<PlayerDto> players) {
-		this();// calls the constructor above
-		this.id = id;
-		this.name = name;
-		this.year = year;
-		this.president = president;
-		this.coach = coach;
-		this.players = players;
-	}
-
 	public int getId() {
 		return id;
 	}

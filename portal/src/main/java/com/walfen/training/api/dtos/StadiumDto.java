@@ -17,21 +17,6 @@ public class StadiumDto {
 	private List<Seat> seats;
 	private Club club;
 
-	public StadiumDto() {
-		super();
-		this.seats = new ArrayList<>();
-	}
-
-	public StadiumDto(int id, String name, LocalDate year, Address address, List<Seat> seats, Club club) {
-		this();
-		this.id = id;
-		this.name = name;
-		this.year = year;
-		this.address = address;
-		this.seats = seats;
-		this.club = club;
-	}
-
 	public int getId() {
 		return id;
 	}

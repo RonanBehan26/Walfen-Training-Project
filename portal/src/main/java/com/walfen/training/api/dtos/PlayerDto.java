@@ -9,12 +9,6 @@ public class PlayerDto extends PersonDto {
 	private String position;
 	private int goals;
 
-	public PlayerDto(String firstName, String lastName, LocalDate birthDate, String position, int goals) {
-		super(firstName, lastName, birthDate);
-		this.position = position;
-		this.goals = goals;
-	}
-
 	public String getPosition() {
 		return position;
 	}

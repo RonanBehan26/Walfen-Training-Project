@@ -9,11 +9,6 @@ public class SharkDto extends AnimalDto implements CarnivoreDto {
 		return "Shark";
 	}
 
-	public SharkDto(String ocean) {
-		super();
-		this.ocean = ocean;
-	}
-
 	public void swim() {
 		System.out.println("swimming");
 	}

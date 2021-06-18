@@ -7,6 +7,7 @@ import com.walfen.training.api.dtos.ClubDto;
 import com.walfen.training.api.dtos.PlayerDto;
 import com.walfen.training.api.entities.Club;
 import com.walfen.training.api.entities.Zoo;
+import com.walfen.training.api.football.Player;
 
 public interface ClubService {
 
@@ -14,6 +15,6 @@ public interface ClubService {
 
 	Club get(Long id);
 
-	List<PlayerDto> listPlayers(Long id);
+	List<Player> listPlayers(Long id);
 	
 }

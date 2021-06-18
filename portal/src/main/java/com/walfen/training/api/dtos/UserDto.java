@@ -6,11 +6,7 @@ public class UserDto {
 	private String firstName;
 	private String lastName;
 	private boolean dto;
-	
-	public UserDto() {
-		this.dto = true;
-	}
-	
+		
 	public long getId() {
 		return id;
 	}
