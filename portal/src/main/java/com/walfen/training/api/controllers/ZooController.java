@@ -39,11 +39,6 @@ public class ZooController {
 		return zoos.stream().map(a -> mapper.map(a, ZooDto.class)).collect(Collectors.toList());
 	}
 	
-
-
-	
-	
-
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ZooDto get(@PathVariable Long id) {
 		Zoo zoo = zooService.get(id);

@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 
 import com.walfen.training.api.zoo.Animal;
 
-//@Entity
+@Entity
 public class Zoo {
 
 	private long id;
@@ -20,7 +20,6 @@ public class Zoo {
 	private List<Animal> animals = new ArrayList<>();
 
 	public Zoo() {
-		super();
 		this.animals = new ArrayList<>();
 	}
 
