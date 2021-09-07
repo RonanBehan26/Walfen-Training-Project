@@ -78,6 +78,7 @@ public String extension;
 public Phone withNumber(String number) {
 this.number = number;
 return this;
+
 }
 
 public Phone withPhoneType(String phoneType) {
